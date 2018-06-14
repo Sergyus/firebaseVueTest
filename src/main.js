@@ -1,16 +1,14 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
-import Vue from 'vue'
-import App from './App'
-import router from './router'
+import Vue from 'vue';
+import App from './App';
+import router from './router';
+import pnprogress from './router/nprogress'
+import filters from './filters/filters';
+import firebase from './firebase';
+import VueFire from 'vuefire';
 
+Vue.use(VueFire);
 Vue.config.productionTip = false;
 
-Vue.filter('currency', function (value) {
-  return "$" + value;
-});
-
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,

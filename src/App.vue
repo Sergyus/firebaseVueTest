@@ -2,10 +2,11 @@
   <div id="app">
     <nav>
       <router-link to="/" class="homelink">logo</router-link>
+      <router-link to="/test" class="homelink">FireBase</router-link>
       <!-- <span>/</span>
       <router-link to="/book" class="homelink">book</router-link> -->
     </nav>
-    
+
     <router-view/>
   </div>
 </template>
@@ -47,7 +48,7 @@ nav {
   font-style: italic;
 
   &.router-link-active {
-    
+
   }
   &.router-link-exact-active {
     border-bottom: 1px solid currentColor;
