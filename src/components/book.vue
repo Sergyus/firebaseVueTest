@@ -55,20 +55,21 @@
 
 <script>
   import axios from 'axios'
+
   export default {
-    data () {
+    data() {
       return {
         books: [],
         book: null
       }
     },
     created() {
-        // add firebase url here
-        axios.get("http://localhost:8080/static/books.json")
-        .then(response=> {
-          let bookId = this.$route.params.id
-          this.books = response.data.books
-          this.book=this.books[bookId]
+      // add firebase url here
+      axios.get("http://localhost:8080/static/books.json")
+        .then(response => {
+          let bookId = this.$route.params.id;
+          this.books = response.data.books;
+          this.book = this.books[bookId]
         })
         .catch(e => {
           console.log(e);
@@ -79,12 +80,13 @@
 
 <style lang="scss">
   .book {
-    
+
     &__specs {
       display: flex;
       margin-top: 30px;
     }
   }
+
   .spec {
     display: flex;
     align-items: flex-start;
@@ -98,7 +100,7 @@
     }
     &__highlight {
       font-size: 20px;
-      font-weigt: bold;
+      font-weight: bold;
       line-height: 1;
     }
     span {
@@ -107,9 +109,11 @@
       line-height: 1;
     }
   }
+
   .icon {
     width: 18px;
   }
+
   .tags {
     padding: 0;
     display: flex;
@@ -123,7 +127,7 @@
       background-color: lighten(#B70000, 40%);
       border-radius: 2px;
       user-select: none;
-      
+
       &:last-of-type {
         margin-right: 0;
       }

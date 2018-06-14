@@ -9,7 +9,7 @@
             <router-link :to="{name: 'book', params: {id:book.id} }" class="books__cover">
               <img :src="book.cover" :alt="book.shortdesc">
             </router-link>
-            
+
             <div class="books__info">
               <router-link :to="{name: 'book', params: {id:book.id} }" class="books__title">{{ book.title }}</router-link>
               <p class="books__author">{{ book.author }}</p>
@@ -32,24 +32,25 @@
 </template>
 
 <script>
-import axios from 'axios';
-export default {
-  name: 'books',
-  data () {
-    return {
-      books: []
+  import axios from 'axios';
+
+  export default {
+    name: 'books',
+    data() {
+      return {
+        books: []
+      }
+    },
+    created() {
+      axios.get("http://localhost:8080/static/books.json")
+        .then(response => {
+          this.books = response.data.books;
+        })
+        .catch(e => {
+          console.log(e);
+        })
     }
-  },
-  created() {
-    axios.get("http://localhost:8080/static/books.json")
-    .then(response=> {
-      this.books = response.data.books
-    })
-    .catch(e => {
-      console.log(e);
-    })
   }
-}
 </script>
 
 <style lang="scss">
@@ -78,7 +79,6 @@ export default {
     &__cover {
       display: block;
       // overflow: hidden;
-
 
       img {
         max-width: 100%;
