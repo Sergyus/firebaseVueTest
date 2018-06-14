@@ -11,6 +11,5 @@ const firedb = firebase.initializeApp({
   messagingSenderId: "875212420296"
 });
 
-
 export const db = firedb.database();
 export const namesRef = db.ref('books');

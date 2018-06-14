@@ -7,11 +7,11 @@
       <div class="card-body">
         <form v-on:submit.prevent="addItem">
           <div class="form-group">
-            <label>Item Name:</label>
+            <label>Book Name:</label>
             <input type="text" class="form-control"/>
           </div>
           <div class="form-group">
-            <label>Item Price:</label>
+            <label>Book Price:</label>
             <input type="text" class="form-control"/>
           </div>
           <div class="form-group">
@@ -27,12 +27,9 @@
   import { db, namesRef } from '../firebase';
   export default {
     name: "Test",
-    firebase: {
-      items: namesRef
-    },
     data () {
       return {
-        newItem: {
+        newBook: {
           name: '',
           price: ''
         }
@@ -40,12 +37,12 @@
     },
     methods: {
       addItem() {
-        this.$firebaseRefs.items.push({
-          name: this.newItem.name,
-          price: this.newItem.price
+        namesRef.push({
+          name: this.newBook.name,
+          price: this.newBook.price
         });
-        this.newItem.name = '';
-        this.newItem.price = '';
+        this.newBook.name = '';
+        this.newBook.price = '';
         this.$router.push('/test')
       }
     }
