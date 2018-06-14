@@ -12,4 +12,4 @@ const firedb = firebase.initializeApp({
 });
 
 export const db = firedb.database();
-export const namesRef = db.ref('books');
+export const booksRef = db.ref('books');

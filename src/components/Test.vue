@@ -5,7 +5,7 @@
         <h3>Add Item</h3>
       </div>
       <div class="card-body">
-        <form v-on:submit.prevent="addItem">
+        <form v-on:submit.prevent="addBook">
           <div class="form-group">
             <label>Book Name:</label>
             <input type="text" class="form-control"/>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import { db, namesRef } from '../firebase';
+  import { db, booksRef } from '../firebase';
   export default {
     name: "Test",
     data () {
@@ -36,8 +36,8 @@
       }
     },
     methods: {
-      addItem() {
-        namesRef.push({
+      addBook() {
+        booksRef.push({
           name: this.newBook.name,
           price: this.newBook.price
         });
