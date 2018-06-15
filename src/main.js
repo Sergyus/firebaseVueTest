@@ -6,9 +6,17 @@ import filters from './filters/filters';
 import firebase from 'firebase/app';
 import VueFire from 'vuefire';
 import 'firebase/auth';
+import wysiwyg from "vue-wysiwyg";
+// https://github.com/chmln/vue-wysiwyg
 
 
 Vue.use(VueFire);
+Vue.use(wysiwyg,{
+  hideModules: {
+    "image": true,
+    "code": true,
+  }
+});
 Vue.config.productionTip = false;
 
 new Vue({
