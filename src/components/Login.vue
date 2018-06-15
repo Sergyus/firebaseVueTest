@@ -1,12 +1,5 @@
 <template>
   <section>
-    <div class="card-header is-centered">
-      <h2 class="card-header-title is-centered" v-if="!user">Sign in to Your Account</h2>
-      <div v-else>
-        <h2 class="card-header-title is-centered">You are logged in</h2>
-        <button @click="signOut">Sign Out</button>
-      </div>
-    </div>
 
     <div class="o-page__card" v-if="!user">
       <div class="c-card u-mb-xsmall">
@@ -25,10 +18,20 @@
                 <input v-model="password" class="c-input" type="password" id="input2" placeholder="Your password">
             </div>
 
-            <button v-on:click="signIn" class="c-btn c-btn--info c-btn--fullwidth" type="submit">Sign in to Dashboard</button>
+            <button @click="signIn" class="c-btn c-btn--info c-btn--fullwidth" type="submit">Sign in to Dashboard</button>
         </form>
       </div>
     </div>
+
+      <div class="o-page__card" v-else>
+        <div class="c-card u-mb-xsmall u-text-center">
+          <header class="c-card__header u-pt-large">
+              <h1 class="u-h3 u-mb-zero">You are logged in</h1>
+          </header>
+          <button @click="signOut" class="c-btn c-btn--info" type="submit">Sign Out</button>
+        </div>
+      </div>
+      
   </section>
 </template>
 
@@ -47,7 +50,7 @@
       return {
         user: null,
         email: "sergey.misurko@gmail.com",
-        password: ""
+        password: "Aa1234567_"
       };
     },
     methods: {
@@ -69,7 +72,3 @@
     }
   };
 </script>
-<<<<<<< HEAD
-=======
-
->>>>>>> 11f381d0b39f321a44c7db14e8692d85be66a369
