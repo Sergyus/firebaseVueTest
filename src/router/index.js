@@ -15,12 +15,8 @@ export default new Router({
     { path: '/', name: 'books', component: books },
     { path: '/book/:id', name: 'book', component: book },
     { path: '/test', name: 'Test', component: Test },
-<<<<<<< HEAD
     { path: '/login', name: 'Login ', component: Login },
     { path: '/dashboard', name: 'dashboard ', component: dashboard },
-=======
-    // { path: '/login', name: 'Login ', component: Login },
     { path: '/admin', name: 'Admin ', component: Admin },
->>>>>>> 11f381d0b39f321a44c7db14e8692d85be66a369
   ]
 })
