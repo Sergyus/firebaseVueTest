@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/" class="homelink">logo</router-link>
+      <router-link to="/" class="homelink">LOGO</router-link>
       <router-link to="/test" class="homelink">FireBase</router-link>
-      <router-link to="/login" class="homelink">Login</router-link>
+      <router-link to="/admin" class="homelink">Admin</router-link>
       <!-- <span>/</span>
       <router-link to="/book" class="homelink">book</router-link> -->
     </nav>
