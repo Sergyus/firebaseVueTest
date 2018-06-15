@@ -3,12 +3,14 @@ import App from './App';
 import router from './router';
 import pnprogress from './router/nprogress'
 import filters from './filters/filters';
-import firebase from 'firebase/app';
 import VueFire from 'vuefire';
+<<<<<<< HEAD
 import 'firebase/auth';
 import wysiwyg from "vue-wysiwyg";
 // https://github.com/chmln/vue-wysiwyg
 
+=======
+>>>>>>> 11f381d0b39f321a44c7db14e8692d85be66a369
 
 Vue.use(VueFire);
 Vue.use(wysiwyg,{
@@ -21,17 +23,5 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  created() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) {
-        this.$router.push('/success')
-      } else {
-        this.$router.push('/login')
-      }
-    });
-  },
   render: h => h(App)
 }).$mount('#app');
-
-
-//https://github.com/garethredfern/vue-auth-demo/blob/master/src/components/SignIn.vue
