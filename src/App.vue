@@ -36,6 +36,9 @@ $f-stack: 'Roboto', Helvetica, Arial, sans-serif;
   margin-top: 60px;
 
 }
+nav {
+  margin-bottom: 30px;
+}
 img {
   max-width: 100%;
 }
