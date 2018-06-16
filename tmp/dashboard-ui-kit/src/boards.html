@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Boards (Trello-Style) | Dashboard UI Kit</title>
+        <meta name="description" content="Dashboard UI Kit">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="css/main.min.css">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header class="c-navbar">
+            <a class="c-navbar__brand" href="#!">
+                <img src="img/logo.png" alt="Dashboard UI Kit">
+            </a>
+                       
+           <!-- Navigation items that will be collapes and toggle in small viewports -->
+            <nav class="c-nav collapse" id="main-nav">
+                <ul class="c-nav__list">
+                    <li class="c-nav__item">
+                        <a class="c-nav__link" href="#!">Events</a>
+                    </li>
+                    <li class="c-nav__item">
+                        <a class="c-nav__link" href="#!">Browse</a>
+                    </li>
+                    <li class="c-nav__item">
+                        <a class="c-nav__link" href="#!">Your Ticket</a>
+                    </li>
+                    <li class="c-nav__item">
+                        <div class="c-field c-field--inline has-icon-right u-hidden-up@tablet">
+                            <span class="c-field__icon">
+                                <i class="fa fa-search"></i> 
+                            </span>
+                            
+                            <label class="u-hidden-visually" for="navbar-search-small">Seach</label>
+                            <input class="c-input" id="navbar-search-small" type="text" placeholder="Search">
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- // Navigation items  -->
+            
+            <div class="c-dropdown u-ml-auto dropdown">
+                <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="c-avatar__img" src="img/avatar-72.jpg" alt="User's Profile Picture">
+                </a>
+
+                <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
+                    <a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>
+                    <a class="c-dropdown__item dropdown-item" href="#">View Activity</a>
+                    <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>
+                </div>
+            </div>
+
+            <button class="c-nav-toggle" data-toggle="collapse" data-target="#main-nav">
+                <span class="c-nav-toggle__bar"></span>
+                <span class="c-nav-toggle__bar"></span>
+                <span class="c-nav-toggle__bar"></span>
+            </button><!-- // .c-nav-toggle -->
+        </header>
+
+        <div class="c-toolbar u-justify-space-between u-mb-medium">
+            <h4 class="c-toolbar__title u-mr-auto">Design Backlog</h4>
+
+            <div class="c-field c-field--inline has-icon-right u-hidden-down@tablet u-mr-small">
+                <span class="c-field__icon">
+                    <i class="fa fa-search"></i> 
+                </span>
+                
+                <label class="u-hidden-visually" for="navbar-search">Seach</label>
+                <input class="c-input" id="navbar-search" type="text" placeholder="Search">
+            </div>
+
+            <a class="c-btn c-btn--info" href="#">New Card</a>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6 col-md-4 col-xl">
+                    <div class="c-board c-board--info">
+                        <div class="c-board__header">
+                            <h4 class="c-board__title">Backlog 
+                                <span class="u-text-mute"> 8</span>
+                            </h4>
+
+                            <div class="c-board__actions dropdown">
+                                <a class="dropdown-toggle" href="#" id="dropdwonMenuBoard1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuBoard1">
+                                    <a href="#" class="c-dropdown__item">Action 1</a>
+                                    <a href="#" class="c-dropdown__item">Action 2</a>
+                                    <a href="#" class="c-dropdown__item">Action 3</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="c-board__content">
+                            <div class="c-task c-task--info">
+                                <p class="c-task__content">Monetisation (Share revenue with developers)</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>2 
+                                    </span>
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-check-square-o"></i>1/4
+                                    </span>
+                                </div>
+                            </div><!-- // .c-task -->
+
+                            <div class="c-task">
+                                <img class="c-task__img" src="img/board-task-img1.png" alt="About the image">
+                                <p class="c-task__content">Post new Dribbble shot and share it on social media</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>3
+                                    </span>
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-check-square-o"></i>2/4
+                                    </span>
+                                </div>
+                            </div><!-- // .c-task -->
+
+                            <div class="c-task">
+                                <p class="c-task__content">New Infographic Designs for Investors</p>
+                            </div><!-- // .c-task -->
+
+                            <div class="c-task c-task--warning">
+                                <p class="c-task__content">Design a new dashboard for Apple Watch</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>5
+                                    </span>
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-check-square-o"></i>0/4
+                                    </span>
+                                </div>
+                            </div><!-- // .c-task -->
+
+                            <div class="c-task">
+                                <p class="c-task__content">Release new version of landing page designed by Joel</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-badge c-badge--xsmall c-badge--danger">
+                                        <i class="fa fa-clock-o"></i>12:00
+                                    </span>
+                                </div>
+                            </div><!-- // .c-task -->
+                        </div><!-- // .c-board__content -->
+
+                        <a href="#" class="c-board__btn">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div><!-- // .c-board -->
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xl">
+                    <div class="c-board c-board--danger">
+                        <div class="c-board__header">
+                            <h4 class="c-board__title">Next Priority 
+                                <span class="u-text-mute">4</span>
+                            </h4>
+
+                            <div class="c-board__actions dropdown">
+                                <a class="dropdown-toggle" href="#" id="dropdwonMenuBoard2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuBoard2">
+                                    <a href="#" class="c-dropdown__item">Action 1</a>
+                                    <a href="#" class="c-dropdown__item">Action 2</a>
+                                    <a href="#" class="c-dropdown__item">Action 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="c-board__content">
+                            <div class="c-task">
+                                <img class="c-task__img" src="img/board-task-img2.jpg" alt="About the image">
+                                <p class="c-task__content">Unsplash.com Research, find the best examples for article</p>
+
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>3
+                                    </span>
+                                </div>
+                            </div><!-- // .c-task -->
+
+                            <div class="c-task c-task--warning">
+                                <p class="c-task__content">New Team Pictures</p>
+                            </div>
+
+                            <div class="c-task">
+                                <p class="c-task__content">Discuss new ideas about new Marketing techniques</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>14
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="c-task c-task--info">
+                                <p class="c-task__content">Visual Overview of the Dashboard Prepare UI Kit</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>3
+                                    </span>
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-check-square-o"></i>1/4
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- // .c-board__content -->
+
+                        <a href="#" class="c-board__btn">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div><!-- // .c-board -->
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xl">
+                    <div class="c-board c-board--success">
+                        <div class="c-board__header">
+                            <h4 class="c-board__title">In Progress 
+                                <span class="u-text-mute"> 3</span>
+                            </h4>
+
+                            <div class="c-board__actions dropdown">
+                                <a class="dropdown-toggle" href="#" id="dropdwonMenuBoard3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuBoard3">
+                                    <a href="#" class="c-dropdown__item">Action 1</a>
+                                    <a href="#" class="c-dropdown__item">Action 2</a>
+                                    <a href="#" class="c-dropdown__item">Action 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="c-board__content">
+                            <div class="c-task">
+                                <p class="c-task__content">New Pitch Deck for CEO, based on feedback of X Ventures</p>
+                            </div>
+
+                            <div class="c-task">
+                                <img class="c-task__img" src="img/board-task-img3.png" alt="About the image">
+                                <p class="c-task__content">Infographic about Water resources in India (+ Pictures)</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>3
+                                    </span>
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-check-square-o"></i>2/4
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="c-task c-task--success">
+                                <p class="c-task__content">Prepare Q2 Overview of Mixpanel Statistics (Keynote required)</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-comments-o"></i>2
+                                    </span>
+                                    <span class="c-task__indicator">
+                                        <i class="fa fa-check-square-o"></i>1/4
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- // .c-board__content -->
+
+                        <a href="#" class="c-board__btn">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div><!-- // .c-board -->
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xl">
+                    <div class="c-board c-board--info">
+                        <div class="c-board__header">
+                            <h4 class="c-board__title">QA 
+                                <span class="u-text-mute"> 3</span>
+                            </h4>
+
+                            <div class="c-board__actions dropdown">
+                                <a class="dropdown-toggle" href="#" id="dropdwonMenuBoard4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-ellipsis-h"></i></a>
+                                <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuBoard4">
+                                    <a href="#" class="c-dropdown__item">Action 1</a>
+                                    <a href="#" class="c-dropdown__item">Action 2</a>
+                                    <a href="#" class="c-dropdown__item">Action 3</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="c-board__content">
+                            <div class="c-task">
+                                <img class="c-task__img" src="img/board-task-img4.jpg" alt="About the image">
+                                <p class="c-task__content">Final version of Travel Website Promo pictures</p>
+                            </div>
+
+                            <div class="c-task">
+                                <img class="c-task__img" src="img/board-task-img5.jpg" alt="About the image">
+                                <p class="c-task__content">Release first teaser of Night & Travel UI Kit</p>
+                            </div>
+
+                            <div class="c-task c-task--success">
+                                <p class="c-task__content">Final Prototype before meeting with CEO Jason Stan</p>
+                                <div class="c-task__indicators">
+                                    <span class="c-task__indicator">
+                                        <span class="c-badge c-badge--xsmall c-badge--warning">
+                                            <i class="fa fa fa-clock-o"></i>15:00
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div><!-- // .c-board__content -->
+
+                        <a href="#" class="c-board__btn">
+                            <i class="fa fa-plus"></i>
+                        </a>
+                    </div><!-- // .c-board -->
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-xl">
+                    <a class="c-add-board" href="#"><i class="fa fa-plus"></i>Add a board</a>
+                </div><!-- // .c-board -->
+            </div>
+        </div>
+        
+
+        <script src="js/main.min.js"></script>
+    </body>
+</html>

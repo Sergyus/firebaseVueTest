@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Events | Dashboard UI Kit</title>
+        <meta name="description" content="Dashboard UI Kit">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600" rel="stylesheet">
+
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="css/main.min.css">
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <header class="c-navbar u-mb-medium">
+            <a class="c-navbar__brand" href="#!">
+                <img src="img/logo.png" alt="Dashboard UI Kit">
+            </a>
+                       
+           <!-- Navigation items that will be collapes and toggle in small viewports -->
+            <nav class="c-nav collapse" id="main-nav">
+                <ul class="c-nav__list">
+                    <li class="c-nav__item">
+                        <a class="c-nav__link" href="#!">Events</a>
+                    </li>
+                    <li class="c-nav__item">
+                        <a class="c-nav__link" href="#!">Browse</a>
+                    </li>
+                    <li class="c-nav__item">
+                        <a class="c-nav__link" href="#!">Your Ticket</a>
+                    </li>
+                    <li class="c-nav__item">
+                        <div class="c-field c-field--inline has-icon-right u-hidden-up@tablet">
+                            <span class="c-field__icon">
+                                <i class="fa fa-search"></i> 
+                            </span>
+                            
+                            <label class="u-hidden-visually" for="navbar-search-small">Seach</label>
+                            <input class="c-input" id="navbar-search-small" type="text" placeholder="Search">
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <!-- // Navigation items  -->
+
+            <div class="c-field c-field--inline has-icon-right u-hidden-down@tablet u-ml-auto u-mr-small">
+                <span class="c-field__icon">
+                    <i class="fa fa-search"></i> 
+                </span>
+                
+                <label class="u-hidden-visually" for="navbar-search">Seach</label>
+                <input class="c-input" id="navbar-search" type="text" placeholder="Search">
+            </div>
+            
+            <div class="c-dropdown dropdown">
+                <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="c-avatar__img" src="img/avatar-72.jpg" alt="User's Profile Picture">
+                </a>
+
+                <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">
+                    <a class="c-dropdown__item dropdown-item" href="#">Edit Profile</a>
+                    <a class="c-dropdown__item dropdown-item" href="#">View Activity</a>
+                    <a class="c-dropdown__item dropdown-item" href="#">Manage Roles</a>
+                </div>
+            </div>
+
+            <button class="c-nav-toggle" type="button" data-toggle="collapse" data-target="#main-nav">
+                <span class="c-nav-toggle__bar"></span>
+                <span class="c-nav-toggle__bar"></span>
+                <span class="c-nav-toggle__bar"></span>
+            </button><!-- // .c-nav-toggle -->
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3">
+                    <aside class="c-menu u-ml-medium u-hidden-down@wide">
+                        <h4 class="c-menu__title">Menu</h4>
+                        <ul class="u-mb-medium">
+                            <li class="c-menu__item">
+                                <a class="c-menu__link is-active" href="#">
+                                    <i class="fa fa-trophy u-mr-xsmall"></i>Featured Events
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <i class="c-menu__icon fa fa-heart-o"></i>Recommended
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <i class="c-menu__icon fa fa-bullhorn"></i>Live Streams
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <i class="c-menu__icon fa fa-newspaper-o"></i>Press
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <i class="c-menu__icon fa fa-diamond"></i>Favourites
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <i class="c-menu__icon fa fa-map-o"></i>Places
+                                </a>
+                            </li>
+                        </ul>
+
+                        <h4 class="c-menu__title">Your Events</h4>
+                        <ul>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <img src="img/sidebar-icon1.png" class="u-mr-xsmall" style="width: 14px;" alt="Icon 1">Classes
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <img src="img/sidebar-icon2.png" class="u-mr-xsmall" style="width: 14px;" alt="Icon 2">People
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <img src="img/sidebar-icon3.png" class="u-mr-xsmall" style="width: 14px;" alt="Icon 3">Networking
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <img src="img/sidebar-icon4.png" class="u-mr-xsmall" style="width: 14px;" alt="Icon 4">Hi-Skill
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <img src="img/sidebar-icon5.png" class="u-mr-xsmall" style="width: 14px;" alt="Add icon">Going to Buy
+                                </a>
+                            </li>
+                            <li class="c-menu__item">
+                                <a class="c-menu__link" href="#">
+                                    <img src="img/sidebar-icon6.png" class="u-mr-xsmall" style="width: 14px;" alt="Add icon">Add New List
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+                </div>
+
+                <div class="col-sm-12 col-xl-9">
+                    <main>
+                        <div class="row">
+                            <div class="col-8 col-xl-10">
+                                <h1 class="u-h3">Featured Events</h1>
+                            </div>
+                            <div class="col-4 col-xl-2">
+                                <div class="c-field u-mb-small">
+                                    <label class="c-field__label u-hidden-visually" for="select-recently">Recently Opened</label>
+
+                                    <!-- Select2 jquery plugin is used -->
+                                    <select class="c-select" name="recently-opened" id="select-recently">
+                                        <option value="value1">All Types</option>
+                                        <option value="value2">This day</option>
+                                        <option value="value3">Last Week</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div><!-- // .row -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <article class="c-event">
+                                    <div class="c-event__img">
+                                        <img src="img/event1.jpg" alt="San Francisco's Buildings">
+                                        <span class="c-event__status">Featured</span>
+                                    </div>
+                                    <div class="c-event__meta">
+                                        <h3 class="c-event__title">Designing in US 
+                                            <span class="c-event__place">United States, San Francisco</span>
+                                        </h3>
+                                        
+                                        <a href="#" class="c-btn c-btn--success c-event__btn">Buy for $560</a>
+                                    </div>
+                                </article><!-- // .c-event -->
+                            </div>
+
+                            <div class="col-md-6">
+                                <article class="c-event">
+                                    <div class="c-event__img">
+                                        <img src="img/event2.jpg" alt="San Francisco's Buildings">
+
+                                        <span class="c-event__status">Featured</span>
+                                    </div>
+                                    <div class="c-event__meta">
+
+                                        <h3 class="c-event__title">Photography Class 
+                                            <span class="c-event__place">United States, San Francisco</span>
+                                        </h3>
+                                        
+                                        <a href="#" class="c-btn c-btn--success c-event__btn">Buy for $560</a>
+                                    </div>
+                                </article><!-- // .c-event -->
+                            </div>
+                        </div><!-- // .row -->
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="c-table-responsive@tablet">
+                                    <table class="c-table u-mb-large">
+                                        <caption class="c-table__title">
+                                            All Events <small>32 Events</small>
+                                        </caption>
+                                        <thead class="c-table__head c-table__head--slim">
+                                            <tr>
+                                                <th class="c-table__cell c-table__cell--head">Conference</th>
+                                                <th class="c-table__cell c-table__cell--head">Date</th>
+                                                <th class="c-table__cell c-table__cell--head">Price</th>
+                                                <th class="c-table__cell c-table__cell--head">
+                                                    <span class="u-hidden-visually">Actions</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">O’Reilly Design Conference 
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        United States, San Francisco
+                                                    </span>
+                                                </td>
+
+                                                <td class="c-table__cell">24th - 28th August 2018</td>
+                                                <td class="c-table__cell">$290
+                                                    <span class="u-block u-text-xsmall u-text-mute">
+                                                        32 Tickets remaining
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn c-btn--success" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">UX Night at General Assembly
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        United States, Boston
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell">6th - 9th July 2018</td>
+                                                <td class="c-table__cell">$290
+                                                    <span class="u-block u-text-xsmall u-text-mute">
+                                                        22 Tickets remaining
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn c-btn--success" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">TypeCon2016
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        France, Paris
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell">24th June 2018</td>
+                                                <td class="c-table__cell">$290
+                                                    <span class="u-block u-text-xsmall u-text-mute">
+                                                        904 Tickets remaining
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn c-btn--success" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">SmashingConf San Francisco 2018
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        United States, San Francisco
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell">31st May - 3rd June 2018</td>
+                                                <td class="c-table__cell">$290
+                                                    <span class="u-block u-text-xsmall u-text-mute">
+                                                        904 Tickets remaining
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn c-btn--success" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">Now What? Conference 2018
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        United States, Sioux Falls
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell">4th - 8th May 2018</td>
+                                                <td class="c-table__cell">
+                                                    <del class="u-text-danger">Sold Out</del>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn is-disabled" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">Generate Moscow 2018
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        Russia, Moscow
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell">13th - 14th April 2018</td>
+                                                <td class="c-table__cell">$390
+                                                    <span class="u-block u-text-xsmall u-text-danger">
+                                                        2 Tickets remaining
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn c-btn--success" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="c-table__row">
+                                                <td class="c-table__cell">REVOLVE Conference
+                                                    <span class="u-block u-text-mute u-text-xsmall">
+                                                        United States, Charleston
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell">24th - 28th August 2016</td>
+                                                <td class="c-table__cell">$2,100
+                                                    <span class="u-block u-text-xsmall u-text-mute">
+                                                        89 Tickets remaining
+                                                    </span>
+                                                </td>
+                                                <td class="c-table__cell u-text-right">
+                                                    <a class="c-btn c-btn--success" href="#">Buy Tickets</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/main.min.js"></script>
+    </body>
+</html>
