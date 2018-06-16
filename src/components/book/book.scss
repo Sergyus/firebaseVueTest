@@ -1,0 +1,54 @@
+.book {
+
+    &__specs {
+      display: flex;
+      margin-top: 30px;
+    }
+  }
+
+  .spec {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 20px;
+
+    img {
+      margin-right: 10px;
+    }
+    &__text {
+
+    }
+    &__highlight {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1;
+    }
+    span {
+      margin-top: 0;
+      font-size: 10px;
+      line-height: 1;
+    }
+  }
+
+  .icon {
+    width: 18px;
+  }
+
+  .tags {
+    padding: 0;
+    display: flex;
+
+    li {
+      list-style: none;
+      margin-right: 10px;
+      padding: 5px 8px;
+      font-size: 10px;
+      color: #fff;
+      background-color: lighten(#B70000, 40%);
+      border-radius: 2px;
+      user-select: none;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }

@@ -33,6 +33,7 @@
 
 <script>
   import axios from 'axios';
+  import "./books.scss";
 
   export default {
     name: 'books',
@@ -53,74 +54,3 @@
   }
 </script>
 
-<style lang="scss">
-  .books {
-    margin-top: 80px;
-    .row {
-      justify-content: center;
-    }
-    &__item {
-      font-size: 12px;
-      margin-bottom: 20px;
-    }
-    &__inner {
-      min-height: 200px;
-      border: 1px solid grey;
-      border-radius: 4px 4px 0 0;
-      overflow: hidden;
-
-      &:hover {
-
-        img {
-          transform: scale(1.02);
-        }
-      }
-    }
-    &__cover {
-      display: block;
-      // overflow: hidden;
-
-      img {
-        max-width: 100%;
-        width: 100%;
-        transition: all .8s;
-        pointer-events: none;
-      }
-    }
-    &__info {
-      padding: 6px 10px;
-    }
-    &__title {
-      margin-top: 10px;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 12px;
-      text-decoration: none;
-      color: inherit;
-    }
-    &__author {
-      margin-top: 10px;
-      font-size: 11px;
-      font-style: italic;
-      color: lighten(#000, 10%);
-    }
-    &__type {
-      font-size: 10px;
-      color: orange;
-      text-transform: capitalize;
-    }
-    &__star {
-
-      &:before {
-        content: "\2605";
-        font-size: 16px;
-        color: orange;
-      }
-    }
-    &__price {
-      margin: 20px 0 10px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-  }
-</style>
