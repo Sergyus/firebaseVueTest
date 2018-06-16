@@ -6,6 +6,7 @@ import filters from './filters/filters';
 import VueFire from 'vuefire';
 import 'firebase/auth';
 import wysiwyg from "vue-wysiwyg";
+import './ui-kit/scss/main.scss'
 
 Vue.use(VueFire);
 Vue.use(wysiwyg,{

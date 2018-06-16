@@ -102,7 +102,8 @@
       </section>
 
 
-      <login v-else></login>
+      <!--<login v-else></login>-->
+      <ui-login v-else></ui-login>
     </div>
   </section>
 </template>
@@ -110,13 +111,13 @@
 <script>
   import firebase from 'firebase/app';
   import Login from './Login';
-  import '../assets/styles/dashboard.min.css';
+  import UiLogin from './login/ui-login'
   import 'vue-wysiwyg/dist/vueWysiwyg.css'
 
   export default {
     name: "Admin",
     wsw: '<p>test</p>',
-    components: {Login},
+    components: {Login,UiLogin},
     beforeCreate: function () {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
