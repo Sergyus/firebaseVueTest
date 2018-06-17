@@ -13,6 +13,11 @@
             <i class="fa fa-book u-mr-xsmall"></i>Books
           </router-link>
         </li>
+        <li class="c-sidebar__item">
+          <a class="c-sidebar__link" href="#!">
+            <i class="fa fa-sign-in u-mr-xsmall"></i>Logout
+          </a>
+        </li>
       </ul>
     </div>
   </div>
