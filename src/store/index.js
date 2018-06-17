@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 import authentication from './authentication/authentication.module'
 import books from './books/books.module'
 

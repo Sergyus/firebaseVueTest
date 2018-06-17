@@ -3,19 +3,8 @@
 
     <div>
       <section class="o-page" v-if="user">
-        <div class="o-page__sidebar js-page-sidebar">
-          <div class="c-sidebar">
-            <a class="c-sidebar__brand" href="#">Dashboard</a>
-            <h4 class="c-sidebar__title">Dashboards</h4>
-            <ul class="c-sidebar__list">
-              <li class="c-sidebar__item">
-                <a class="c-sidebar__link" href="#">
-                  <i class="fa fa-home u-mr-xsmall"></i>Main
-                </a>
-              </li>
-            </ul>
-          </div><!-- // .c-sidebar -->
-        </div><!-- // .o-page__sidebar -->
+
+        <sidebar></sidebar>
 
         <main class="o-page__content">
           <header class="c-navbar u-mb-medium">
@@ -102,8 +91,8 @@
       </section>
 
 
-      <!--<login v-else></login>-->
-      <ui-login v-else></ui-login>
+      <login v-else></login>
+      <!--<ui-login v-else></ui-login>-->
     </div>
   </section>
 </template>
@@ -113,11 +102,11 @@
   import Login from './Login';
   import UiLogin from './login/ui-login'
   import 'vue-wysiwyg/dist/vueWysiwyg.css'
-
+  import Sidebar from './admin/Sidebar'
   export default {
     name: "Admin",
     wsw: '<p>test</p>',
-    components: {Login,UiLogin},
+    components: {Login,UiLogin,Sidebar},
     beforeCreate: function () {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {

@@ -53,7 +53,7 @@
 </template>
 
 <script>
-  import { db, booksRef } from '../firebase';
+  import { booksRef } from '../firebase/firebase';
   export default {
     name: "Test",
     data () {

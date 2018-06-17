@@ -14,7 +14,11 @@ export default new Router({
     { path: '/', name: 'books', component: books },
     { path: '/book/:id', name: 'book', component: book },
     { path: '/test', name: 'Test', component: Test },
-    { path: '/login', name: 'Login ', component: Login },
-    { path: '/admin', name: 'Admin ', component: Admin },
+    { path: '/login', name: 'Login', component: Login },
+    { path: '/admin', name: 'Admin', component: Admin,
+      children: [
+        { path: 'books', component: books },
+      ]
+    },
   ]
 })
