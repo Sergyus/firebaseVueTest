@@ -4,7 +4,7 @@
       <router-link to="/" class="c-sidebar__brand">Books.com</router-link>
       <ul class="c-sidebar__list">
         <li class="c-sidebar__item">
-          <router-link to="/admin" class="c-sidebar__link">
+          <router-link to="/admin/dashboard" class="c-sidebar__link">
             <i class="fa fa-home u-mr-xsmall"></i>Dashboard
           </router-link>
         </li>
@@ -12,12 +12,16 @@
           <router-link to="/admin/books" class="c-sidebar__link">
             <i class="fa fa-book u-mr-xsmall"></i>Books
           </router-link>
+
+          <router-link to="/admin/edit" class="c-sidebar__link">
+            <i class="fa fa-book u-mr-xsmall"></i>Edit
+          </router-link>
         </li>
-        <li class="c-sidebar__item">
+        <!-- <li class="c-sidebar__item">
           <a class="c-sidebar__link" href="#!">
             <i class="fa fa-sign-in u-mr-xsmall"></i>Logout
           </a>
-        </li>
+        </li> -->
       </ul>
     </div>
   </div>
