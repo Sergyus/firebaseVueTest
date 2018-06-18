@@ -5,31 +5,32 @@
     <!--<ui-login v-if="!user"></ui-login>-->
 
     <section class="o-page" v-else>
-      <!--[ SIDEBAR ]-->
-      <sidebar></sidebar>
-      <main class="o-page__content">
-        <header class="c-navbar u-mb-medium">
-          <button class="c-sidebar-toggle js-sidebar-toggle">
-            <span class="c-sidebar-toggle__bar"></span>
-            <span class="c-sidebar-toggle__bar"></span>
-            <span class="c-sidebar-toggle__bar"></span>
-          </button>
-          <h2 class="c-navbar__title u-mr-auto">{{user.email}}</h2>
-          <a href="#!" @click.prevent="signOut" class="c-btn c-btn--success u-mr-small">Logout</a>
-        </header>
-        <div class="container">
-          {{$route.name}}
+  <!--[ SIDEBAR ]-->
+  <sidebar></sidebar>
+  <main class="o-page__content">
+    <header class="c-navbar u-mb-medium">
+    <button class="c-sidebar-toggle js-sidebar-toggle">
+    <span class="c-sidebar-toggle__bar"></span>
+    <span class="c-sidebar-toggle__bar"></span>
+    <span class="c-sidebar-toggle__bar"></span>
+    </button>
+    <h2 class="c-navbar__title u-mr-auto">{{user.email}}</h2>
+  <a href="#!" @click.prevent="signOut" class="c-btn c-btn--success u-mr-small">Logout</a>
+    </header>
+    <div class="container">
 
-          <dashboard/>
-          <all-books/>
+    {{$route.name}}
 
-        </div>
-      </main>
-    </section>
+  <dashboard/>
+  <all-books/>
+
   </div>
-</template>
+  </main>
+  </section>
+  </div>
+  </template>
 
-<script>
+  <script>
   import firebase from 'firebase/app';
   import Login from '../Login';
   import UiLogin from '../login/ui-login';

@@ -17,6 +17,10 @@
                 <input type="text" class="form-control" v-model="newBook.price"/>
               </div>
               <div class="form-group">
+                <label>Book test:</label>
+                <input type="text" class="form-control" v-model="newBook.test"/>
+              </div>
+              <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Add Book"/>
               </div>
             </form>
@@ -38,6 +42,7 @@
           <tr v-for="item of items" :key="item['.key']">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
+            <td>{{ item.test }}</td>
             <td>
               <!--<router-link :to="{ name: 'Test', params: {id: item['.key']} }" class="btn btn-warning">-->
                 <!--Edit-->
@@ -72,7 +77,8 @@
       addBook() {
         booksRef.push({
           name: this.newBook.name,
-          price: this.newBook.price
+          price: this.newBook.price,
+          test: this.newBook.test,
         });
         this.newBook.name = '';
         this.newBook.price = '';

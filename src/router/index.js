@@ -19,7 +19,7 @@ export default new Router({
     { path: '/login', name: 'Login', component: Login },
     { path: '/admin', name: 'Admin', component: Admin,
       children: [
-        { path: 'books', name: 'dashboard', component: Dashboard },
+        { path: 'dashboard', name: 'dashboard', component: Dashboard },
         { path: 'books', name: 'all-books', component: AllBooks },
       ]
     },
