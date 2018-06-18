@@ -12,10 +12,6 @@
           <router-link to="/admin/books" class="c-sidebar__link">
             <i class="fa fa-book u-mr-xsmall"></i>Books
           </router-link>
-
-          <router-link to="/admin/edit" class="c-sidebar__link">
-            <i class="fa fa-book u-mr-xsmall"></i>Edit
-          </router-link>
         </li>
         <!-- <li class="c-sidebar__item">
           <a class="c-sidebar__link" href="#!">
