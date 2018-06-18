@@ -4,8 +4,8 @@
       <div class="c-card u-mb-xsmall">
         <header class="c-card__header u-pt-large">
           <router-link to="/" class="c-card__icon">
-            <img :src="logo" alt="Dashboard UI Kit">
-            <!--<img src="img/logo-login.svg" alt="Dashboard UI Kit">-->
+            <!--<img :src="logo" alt="Dashboard UI Kit">-->
+            <img src="../../assets/img/logo-login.svg" alt="Dashboard UI Kit">
           </router-link>
           <h1 class="u-h3 u-text-center u-mb-zero">Welcome back! Please login.</h1>
         </header>
@@ -55,21 +55,15 @@
 </template>
 
 <script>
-  import logo from './img/logo-login.svg'
   export default {
     name: "ui-login",
     data () {
       return {
-        logo: ''
       }
     },
     mounted() {
-      this.setLogo();
     },
     methods: {
-      setLogo(){
-        return this.logo = logo;
-      }
     }
   }
 </script>

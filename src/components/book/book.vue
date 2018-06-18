@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container" style="margin-top: 80px;">
+
+    <main-menu></main-menu>
+
     <div class="row">
       <div class="col-md-3">
         <img :src="book.cover" alt="">
@@ -54,10 +57,12 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import './book.scss'
+  import axios from 'axios';
+  import './book.scss';
+  import MainMenu from '../main-menu'
 
   export default {
+    components: { MainMenu },
     data() {
       return {
         books: [],

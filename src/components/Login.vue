@@ -37,8 +37,6 @@
 
 <script>
   import firebase from 'firebase/app';
-  import '../assets/styles/dashboard.min.css';
-
   export default {
     beforeCreate: function () {
       firebase.auth().onAuthStateChanged((user) => {

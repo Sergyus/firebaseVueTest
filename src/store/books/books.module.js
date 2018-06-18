@@ -1,13 +1,13 @@
-import FireBaseService from '@/services/firebase.service'
-import { GET_BOOKS, GET_BOOK, CREATE_BOOK, UPDATE_BOOK } from './books.actions.type'
-import { ADD_BOOK } from './books.mutations.type'
+import FireBaseService from '../../firebase/firebase';
+import {CREATE_BOOK, GET_BOOK, GET_BOOKS, UPDATE_BOOK} from './books.actions.type';
+import {ADD_BOOK} from './books.mutations.type';
 
 const state = {
   books: []
-}
+};
 
 const actions = {
-  [GET_BOOKS] (context) {
+  [GET_BOOKS](context) {
     return new Promise((resolve, reject) => {
       FireBaseService.getBooks()
         .then(querySnapshot => {
@@ -16,8 +16,8 @@ const actions = {
               'id': doc.id,
               'slug': doc.data().slug,
               'title': doc.data().title
-            }
-            context.commit(ADD_BOOK, book)
+            };
+            context.commit(ADD_BOOK, book);
             resolve(true)
           })
         })
@@ -26,7 +26,7 @@ const actions = {
         })
     })
   },
-  [GET_BOOK] (context, bookSlug) {
+  [GET_BOOK](context, bookSlug) {
     return new Promise((resolve, reject) => {
       FireBaseService.getBook(bookSlug)
         .then(querySnapshot => {
@@ -36,7 +36,7 @@ const actions = {
               'slug': doc.data().slug,
               'title': doc.data().title,
               'author': doc.data().author
-            }
+            };
             resolve(book)
           })
         })
@@ -45,7 +45,7 @@ const actions = {
         })
     })
   },
-  [CREATE_BOOK] (context, bookData) {
+  [CREATE_BOOK](context, bookData) {
     return new Promise((resolve, reject) => {
       FireBaseService.createBooks(bookData)
         .then(function () {
@@ -56,7 +56,7 @@ const actions = {
         })
     })
   },
-  [UPDATE_BOOK] (context, bookData) {
+  [UPDATE_BOOK](context, bookData) {
     return new Promise((resolve, reject) => {
       FireBaseService.getBook(bookData.currentBookSlug)
         .then(querySnapshot => {
@@ -72,14 +72,13 @@ const actions = {
         })
     })
   }
-
-}
+};
 
 const mutations = {
-  [ADD_BOOK] (state, book) {
+  [ADD_BOOK](state, book) {
     state.books.push(book)
   }
-}
+};
 
 export default {
   state,

@@ -1,6 +1,9 @@
 <template>
   <div class="books">
     <div class="container">
+
+      <main-menu></main-menu>
+
       <div class="row">
 
         <div class="books__item col-lg-2 col-md-4 col-sm-8" v-for="book in books">
@@ -34,9 +37,11 @@
 <script>
   import axios from 'axios';
   import "./books.scss";
+  import MainMenu from '../main-menu';
 
   export default {
     name: 'books',
+    components: { MainMenu },
     data() {
       return {
         books: []

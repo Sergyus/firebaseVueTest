@@ -1,7 +1,5 @@
-import FireBaseService from '@/services/firebase.service';
-
-import {ASSES_BASE_URL} from '@/config/config';
-
+import FireBaseService from '../../firebase/firebase';
+import {ASSES_BASE_URL} from '../../config/config';
 import {CHECK_AUTH, LOGIN, LOGOUT, REGISTER} from './authentication.actions.type';
 import {PURGE_AUTH, SET_AUTH} from './authentication.mutations.type';
 

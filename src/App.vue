@@ -1,21 +1,22 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/" class="homelink">home</router-link>
-      <router-link to="/test" class="homelink">FireBase</router-link>
-      <router-link to="/login" class="homelink">Login</router-link>
-      <router-link to="/test" class="homelink">FireBase</router-link>
-      <router-link to="/admin" class="homelink">Admin</router-link>
-    </nav>
-
+  <div>
     <router-view/>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  export default {
+    name: 'App',
+    components: {},
+    data() {
+      return {
+      }
+    },
+    mounted() {
+    },
+    methods: {
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -30,19 +31,23 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: $c-main;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
 
   }
+
   nav {
     margin-bottom: 30px;
   }
+
   img {
     max-width: 100%;
   }
+
   nav {
     text-align: center;
     font-size: 28px;
   }
+
   .homelink {
     margin: 0 auto;
     color: $c-accent;
