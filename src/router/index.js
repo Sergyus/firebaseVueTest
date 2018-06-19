@@ -7,6 +7,7 @@ import Login from '../components/Login';
 import Admin from '../components/admin/Admin';
 import Dashboard from '../components/admin/Dashboard';
 import AllBooks from '../components/admin/AllBooks';
+import EditBook from '../components/admin/Editbook';
 
 Vue.use(Router);
 
@@ -17,10 +18,13 @@ export default new Router({
     { path: '/book/:id', name: 'book', component: book },
     { path: '/test', name: 'Test', component: Test },
     { path: '/login', name: 'Login', component: Login },
+
     { path: '/admin', name: 'Admin', component: Admin,
       children: [
         { path: 'dashboard', name: 'dashboard', component: Dashboard },
-        { path: 'books', name: 'all-books', component: AllBooks },
+        { path: 'books', name: 'Book List', component: AllBooks },
+        { path: 'edit/:key', name:"edit", component: EditBook },
+        // { path: 'books/', name: 'Book List', component: AllBooks },
       ]
     },
   ]

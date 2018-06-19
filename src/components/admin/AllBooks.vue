@@ -11,55 +11,65 @@
           </caption> -->
           <thead class="c-table__head c-table__head--slim">
           <tr class="c-table__row">
-            <th class="c-table__cell c-table__cell--head">No.</th>
-            <th class="c-table__cell c-table__cell--head">Invoice Subject</th>
-            <th class="c-table__cell c-table__cell--head">Client</th>
-            <th class="c-table__cell c-table__cell--head">VAT No.</th>
-            <th class="c-table__cell c-table__cell--head">Created</th>
-            <th class="c-table__cell c-table__cell--head">Status</th>
+            <th class="c-table__cell c-table__cell--head">Book title</th>
             <th class="c-table__cell c-table__cell--head">Price</th>
-            <th class="c-table__cell c-table__cell--head">
+            <th class="c-table__cell c-table__cell--head">Actions</th>
+            <!-- <th class="c-table__cell c-table__cell--head">
               <span class="u-hidden-visually">Actions</span>
-            </th>
+            </th> -->
           </tr>
           </thead>
 
           <tbody>
-          <tr class="c-table__row">
-            <td class="c-table__cell"><span class="u-text-mute">00450</span></td>
-            <td class="c-table__cell">Design Works</td>
-            <td class="c-table__cell">
-              <span class="u-text-mute">Carlson Limited</span>
-            </td>
-            <td class="c-table__cell">
-              <span class="u-text-mute">87956621</span>
-            </td>
-            <td class="c-table__cell">
-              <span class="u-text-mute">15 Dec 2017</span>
-            </td>
-            <td class="c-table__cell">
-              <span class="c-badge c-badge--small c-badge--success">Paid</span>
-            </td>
-            <td class="c-table__cell">$887</td>
-          </tr><!-- // .table__row -->
+            <tr class="c-table__row" v-for="item of items" :key="item['.key']">
+              <td class="c-table__cell">
+                <span>{{ item.name }}</span>
+              </td>
+              <td class="c-table__cell">
+                <span>{{ item.price }}</span>
+              </td>
+              <td class="c-table__cell">
+                <!-- <a href="#!" class="c-btn c-btn--warning u-mr-small">Edit</a> -->
+                <router-link :to="{name: 'edit', params: {key:item['.key']} }" class="c-btn c-btn--warning u-mr-small">Edit {{ item['.key'] }}</router-link>
+                <a href="#!" class="c-btn c-btn--danger u-mr-small">Delete</a>
+              </td>
+              
+            </tr>
+            <!-- <tr class="c-table__row">
+              <td class="c-table__cell"><span class="u-text-mute">00450</span></td>
+              <td class="c-table__cell">Design Works</td>
+              <td class="c-table__cell">
+                <span class="u-text-mute">Carlson Limited</span>
+              </td>
+              <td class="c-table__cell">
+                <span class="u-text-mute">87956621</span>
+              </td>
+              <td class="c-table__cell">
+                <span class="u-text-mute">15 Dec 2017</span>
+              </td>
+              <td class="c-table__cell">
+                <span class="c-badge c-badge--small c-badge--success">Paid</span>
+              </td>
+              <td class="c-table__cell">$887</td>
+            </tr>
 
-          <tr class="c-table__row">
-            <td class="c-table__cell"><span class="u-text-mute">00450</span></td>
-            <td class="c-table__cell">UX Wireframes</td>
-            <td class="c-table__cell">
-              <span class="u-text-mute">Adobe</span>
-            </td>
-            <td class="c-table__cell">
-              <span class="u-text-mute">87956421</span>
-            </td>
-            <td class="c-table__cell">
-              <span class="u-text-mute">12 Apr 2017</span>
-            </td>
-            <td class="c-table__cell">
-              <span class="c-badge c-badge--small c-badge--warning">Pending</span>
-            </td>
-            <td class="c-table__cell">$1200</td>
-          </tr><!-- // .table__row -->
+            <tr class="c-table__row">
+              <td class="c-table__cell"><span class="u-text-mute">00450</span></td>
+              <td class="c-table__cell">UX Wireframes</td>
+              <td class="c-table__cell">
+                <span class="u-text-mute">Adobe</span>
+              </td>
+              <td class="c-table__cell">
+                <span class="u-text-mute">87956421</span>
+              </td>
+              <td class="c-table__cell">
+                <span class="u-text-mute">12 Apr 2017</span>
+              </td>
+              <td class="c-table__cell">
+                <span class="c-badge c-badge--small c-badge--warning">Pending</span>
+              </td>
+              <td class="c-table__cell">$1200</td>
+            </tr> -->
 
           </tbody>
         </table>
@@ -69,11 +79,24 @@
 </template>
 
 <script>
+  import { booksRef } from '../../firebase/firebase';
+
   export default {
-    name: "AllBooks"
+    name: "AllBooks",
+    data () {
+      return {
+        items: [],
+      }
+    },
+    firebase: {
+      items: booksRef
+    },
+    methods: {
+      
+    }
   }
 </script>
 
-<style scoped>
+<style>
 
 </style>
