@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="books">
 
     <div class="o-page__card" v-if="!user">
       <div class="c-card u-mb-xsmall">
@@ -66,7 +66,7 @@
       signOut: function () {
         firebase.auth().signOut().then(() => {
           this.user = null
-        }).catch(err => console.log(error))
+        }).catch(err => console.log(err))
       },
     }
   };

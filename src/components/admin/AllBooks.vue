@@ -1,26 +1,26 @@
 <template>
-  <!--<div class="row">-->
-  <!--<wysiwyg v-model="wsw"/>-->
-  <!--</div>-->
-  <div class="row u-mb-large">
-    <div class="col-md-12">
-      <div class="c-table-responsive@wide">
-        <table class="c-table">
-          <!-- <caption class="c-table__title">
-              Invoices
-          </caption> -->
-          <thead class="c-table__head c-table__head--slim">
-          <tr class="c-table__row">
-            <th class="c-table__cell c-table__cell--head">Book title</th>
-            <th class="c-table__cell c-table__cell--head">Price</th>
-            <th class="c-table__cell c-table__cell--head">Actions</th>
-            <!-- <th class="c-table__cell c-table__cell--head">
-              <span class="u-hidden-visually">Actions</span>
-            </th> -->
-          </tr>
-          </thead>
+  <div>
+    <h1 style="margin-bottom: 30px;">Books</h1>
 
-          <tbody>
+    <div class="row u-mb-large">
+      <div class="col-md-12">
+        <div class="c-table-responsive@wide">
+          <table class="c-table">
+            <!-- <caption class="c-table__title">
+                Invoices
+            </caption> -->
+            <thead class="c-table__head c-table__head--slim">
+            <tr class="c-table__row">
+              <th class="c-table__cell c-table__cell--head">Book title</th>
+              <th class="c-table__cell c-table__cell--head">Price</th>
+              <th class="c-table__cell c-table__cell--head">Actions</th>
+              <!-- <th class="c-table__cell c-table__cell--head">
+                <span class="u-hidden-visually">Actions</span>
+              </th> -->
+            </tr>
+            </thead>
+
+            <tbody>
             <tr class="c-table__row" v-for="book of books" :key="book['.key']">
               <td class="c-table__cell">
                 <span>{{ book.name }}</span>
@@ -71,11 +71,16 @@
               <td class="c-table__cell">$1200</td>
             </tr> -->
 
-          </tbody>
-        </table>
-      </div><!-- // .c-card -->
-    </div>
-  </div><!-- // .row -->
+            </tbody>
+          </table>
+        </div><!-- // .c-card -->
+      </div>
+    </div><!-- // .row -->
+
+  </div>
+  <!--<div class="row">-->
+  <!--<wysiwyg v-model="wsw"/>-->
+  <!--</div>-->
 </template>
 
 <script>
