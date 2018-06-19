@@ -38,7 +38,7 @@
   import axios from 'axios';
   import "./books.scss";
   import MainMenu from '../main-menu';
-
+  import {ASSES_BASE_URL} from '../../config/config'
   export default {
     name: 'books',
     components: { MainMenu },
@@ -48,7 +48,7 @@
       }
     },
     created() {
-      axios.get("http://localhost:8080/static/books.json")
+      axios.get(ASSES_BASE_URL+"/static/books.json")
         .then(response => {
           this.books = response.data.books;
         })
