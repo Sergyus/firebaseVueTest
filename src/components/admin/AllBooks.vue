@@ -31,7 +31,7 @@
               <td class="c-table__cell">
                 <!-- <a href="#!" class="c-btn c-btn--warning u-mr-small">Edit</a> -->
                 <router-link :to="{name: 'edit', params: {key:book['.key']} }" class="c-btn c-btn--warning u-mr-small">Edit {{ book['.key'] }}</router-link>
-                <a href="#!" class="c-btn c-btn--danger u-mr-small">Delete</a>
+                <button @click="delBook(book['.key'])" class="c-btn c-btn--danger u-mr-small">Delete</button>
               </td>
 
             </tr>
@@ -79,7 +79,7 @@
 </template>
 
 <script>
-  import { booksRef } from '../../firebase/firebase';
+  import FBS from '../../firebase/service';
 
   export default {
     name: "AllBooks",
@@ -89,10 +89,12 @@
       }
     },
     firebase: {
-      books: booksRef
+      books: FBS.getBooks()
     },
     methods: {
-
+      delBook(key) {
+        FBS.deleteBook(key)
+      }
     }
   }
 </script>

@@ -18,12 +18,9 @@
         </header>
 
         <div class="container">
-          {{$route.name}}
-          <!-- <dashboard/>
-          <all-books/>
-          <editbook/> -->
           <router-view/>
-        </div> <!-- eof .container -->
+        </div>
+
       </main>
   </section>
   </div>
@@ -32,17 +29,13 @@
 <script>
   import firebase from 'firebase/app';
   import Login from '../Login';
-  import UiLogin from '../login/ui-login';
   import 'vue-wysiwyg/dist/vueWysiwyg.css';
   import Sidebar from './Sidebar';
-  import Dashboard from './Dashboard';
-  import AllBooks from './AllBooks';
-  import Editbook from './Editbook';
 
   export default {
     name: "Admin",
     wsw: '<p>test</p>',
-    components: {Login, UiLogin, Sidebar, Dashboard, AllBooks, Editbook},
+    components: {Login, Sidebar,},
     beforeCreate: function () {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
@@ -59,7 +52,7 @@
       signOut() {
         firebase.auth().signOut().then(() => {
           this.user = null;
-        }).catch(err => console.log(error))
+        }).catch(err => console.log(err))
       },
     },
   }

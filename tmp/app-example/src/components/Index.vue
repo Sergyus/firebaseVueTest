@@ -31,7 +31,7 @@
 
 <script>
 import Header from '@/components/navigation/Header'
-import SideNavigation from '@/components/navigation/SideNavigation'
+import SideNavigation from '../components/navigation/SideNavigation'
 import FireBaseService from '../services/firebase.service'
 
 import { NOTIFY_ERROR_ON } from '@/store/notifications/notifications.mutations.type'

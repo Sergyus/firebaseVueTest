@@ -4,12 +4,12 @@ import router from './router';
 import pnprogress from './router/nprogress';
 import filters from './filters/filters';
 import VueFire from 'vuefire';
-// import wysiwyg from "vue-wysiwyg";
 import './assets/styles/main.min.css'
+// import wysiwyg from "vue-wysiwyg";
 // import store from './store'
 
-
 Vue.use(VueFire);
+
 // Vue.use(wysiwyg,{
 //   hideModules: {
 //     "image": true,

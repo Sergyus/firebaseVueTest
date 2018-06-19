@@ -1,4 +1,4 @@
-import FireBaseService from '../../firebase/firebase';
+import FireBaseService from '../../firebase/service';
 import {CREATE_BOOK, GET_BOOK, GET_BOOKS, UPDATE_BOOK} from './books.actions.type';
 import {ADD_BOOK} from './books.mutations.type';
 

@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import { booksRef } from '../../firebase/firebase';
+  import FBS from '../../firebase/service';
 
   export default {
     name: "editbook",
@@ -36,11 +36,9 @@
       this.$router.push('/index')
     },
     firebase: {
-      books: booksRef
+      books: FBS.getBooks()
     },
-    methods: {
-
-    }
+    methods: {}
   }
 </script>
 

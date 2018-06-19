@@ -28,15 +28,15 @@
 </template>
 
 <script>
-import Header from '@/components/navigation/Header'
-import SideNavigation from '@/components/navigation/SideNavigation'
+import Header from '../components/navigation/Header'
+import SideNavigation from '../components/navigation/SideNavigation'
 
-import { NOTIFY_ERROR_ON } from '@/store/notifications/notifications.mutations.type'
-import notificationError from '@/components/notifications/error'
+import { NOTIFY_ERROR_ON } from '../store/notifications/notifications.mutations.type'
+import notificationError from '../components/notifications/error'
 
-import { CREATE_BOOK } from '@/store/books/books.actions.type'
+import { CREATE_BOOK } from '../store/books/books.actions.type'
 
-import UtilityService from '@/services/utility.service'
+import UtilityService from '../services/utility.service'
 
 export default {
   name: 'New',

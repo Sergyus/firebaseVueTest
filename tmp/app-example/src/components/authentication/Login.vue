@@ -75,11 +75,10 @@
 </template>
 
 <script>
-import { ASSES_BASE_URL } from '@/config/config'
-import { LOGIN } from '@/store/authentication/authentication.actions.type'
-import { NOTIFY_ALL_OFF, NOTIFY_ERROR_ON } from '@/store/notifications/notifications.mutations.type'
-
-import notificationError from '@/components/notifications/error'
+import { ASSES_BASE_URL } from '../../config/config'
+import { LOGIN } from '../../store/authentication/authentication.actions.type'
+import { NOTIFY_ALL_OFF, NOTIFY_ERROR_ON } from '../../store/notifications/notifications.mutations.type'
+import notificationError from '../../components/notifications/error'
 
 export default {
   name: 'Login',

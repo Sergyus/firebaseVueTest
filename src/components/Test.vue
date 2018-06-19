@@ -1,5 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container books">
+
+    <main-menu></main-menu>
+
     <div class="row">
       <div class="col-md-6">
         <div class="card">
@@ -15,10 +18,6 @@
               <div class="form-group">
                 <label>Book Price:</label>
                 <input type="text" class="form-control" v-model="newBook.price"/>
-              </div>
-              <div class="form-group">
-                <label>Book test:</label>
-                <input type="text" class="form-control" v-model="newBook.test"/>
               </div>
               <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Add Book"/>
@@ -39,15 +38,14 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="item of books" :key="item['.key']">
-            <td>{{ item.name }}</td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.test }}</td>
+          <tr v-for="book of books" :key="book['.key']">
+            <td>{{ book.name }}</td>
+            <td>{{ book.price }}</td>
             <td>
-              <!--<router-link :to="{ name: 'Test', params: {id: item['.key']} }" class="btn btn-warning">-->
-                <!--Edit-->
+              <!--<router-link :to="{ name: 'Test', params: {id: book['.key']} }" class="btn btn-warning">-->
+              <!--Edit-->
               <!--</router-link>-->
-              <button @click="deleteItem(item['.key'])" class="btn btn-danger">Delete</button>
+              <button @click="delBook(book['.key'])" class="btn btn-danger">Delete</button>
             </td>
           </tr>
           </tbody>
@@ -58,10 +56,12 @@
 </template>
 
 <script>
-  import { booksRef } from '../firebase/firebase';
+  import FBS from '../firebase/service';
+  import MainMenu from './main-menu'
   export default {
     name: "Test",
-    data() {
+    components: { MainMenu },
+    data () {
       return {
         newBook: {
           name: '',
@@ -71,34 +71,28 @@
       }
     },
     firebase: {
-      books: booksRef
+      books: FBS.getBooks()
     },
     mounted() {
-      this.getBooks()
+      this.test()
     },
     methods: {
-      getBooks() {
-        // this.books = booksRef;
-        console.log(this);
+      test(){
       },
       addBook() {
-        booksRef.push({
+        FBS.createBooks({
           name: this.newBook.name,
-          price: this.newBook.price,
-          test: this.newBook.test,
+          price: this.newBook.price
+        }).then(() => {
+          this.newBook.name = '';
+          this.newBook.price = '';
+        }).catch(error => {
+          console.log(error);
         });
-        this.newBook.name = '';
-        this.newBook.price = '';
       },
-      deleteItem(key) {
-        this.$firebaseRefs.books.child(key).remove();
-        toastr.success('Book removed successfully');
+      delBook(key) {
+        FBS.deleteBook(key)
       }
     }
   }
-
 </script>
-
-<style scoped>
-
-</style>
