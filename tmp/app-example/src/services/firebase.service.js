@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import db from '@/firebase/firebase.init'
+import db from '../firebase/firebase.init'
 
 export default {
   register (credentials) {

@@ -4,23 +4,23 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore'
 
-let fb = firebase.initializeApp(config);
-let db = fb.database();
+let app = firebase.initializeApp(config);
+let db = app.database();
 
 export const booksRef = db.ref('books');
 
 export default {
   register (credentials) {
-    return fb.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+    return app.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
   },
   checkAuth () {
-    return fb.auth().currentUser
+    return app.auth().currentUser
   },
   login (credentials) {
-    return fb.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+    return app.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
   },
   logout () {
-    return fb.auth().signOut()
+    return app.auth().signOut()
   },
   getBooks () {
     return db.collection('books').get()
@@ -33,7 +33,7 @@ export default {
     return db.collection('books').add(bookData)
   },
   uploadCover (coverFile) {
-    const ref = fb.storage().ref()
+    const ref = app.storage().ref()
     const task = ref.child(coverFile.name).put(coverFile.file, coverFile.metadata)
     return task
   }

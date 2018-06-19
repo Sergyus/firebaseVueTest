@@ -6,8 +6,7 @@ import filters from './filters/filters';
 import VueFire from 'vuefire';
 // import wysiwyg from "vue-wysiwyg";
 import './assets/styles/main.min.css'
-import store from './store'
-import firebase from 'firebase/app'
+// import store from './store'
 
 
 Vue.use(VueFire);
@@ -21,6 +20,6 @@ Vue.config.productionTip = false;
 
 new Vue({
   router,
-  store,
+  // store,
   render: h => h(App)
 }).$mount('#app');

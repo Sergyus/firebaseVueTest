@@ -39,7 +39,7 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="item of items" :key="item['.key']">
+          <tr v-for="item of books" :key="item['.key']">
             <td>{{ item.name }}</td>
             <td>{{ item.price }}</td>
             <td>{{ item.test }}</td>
@@ -61,19 +61,26 @@
   import { booksRef } from '../firebase/firebase';
   export default {
     name: "Test",
-    data () {
+    data() {
       return {
         newBook: {
           name: '',
           price: ''
         },
-        items: []
+        books: []
       }
     },
     firebase: {
-      items: booksRef
+      books: booksRef
+    },
+    mounted() {
+      this.getBooks()
     },
     methods: {
+      getBooks() {
+        // this.books = booksRef;
+        console.log(this);
+      },
       addBook() {
         booksRef.push({
           name: this.newBook.name,
@@ -84,7 +91,8 @@
         this.newBook.price = '';
       },
       deleteItem(key) {
-        this.$firebaseRefs.items.child(key).remove();
+        this.$firebaseRefs.books.child(key).remove();
+        toastr.success('Book removed successfully');
       }
     }
   }
