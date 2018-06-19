@@ -21,19 +21,19 @@
           </thead>
 
           <tbody>
-            <tr class="c-table__row" v-for="item of items" :key="item['.key']">
+            <tr class="c-table__row" v-for="book of books" :key="book['.key']">
               <td class="c-table__cell">
-                <span>{{ item.name }}</span>
+                <span>{{ book.name }}</span>
               </td>
               <td class="c-table__cell">
-                <span>{{ item.price }}</span>
+                <span>{{ book.price }}</span>
               </td>
               <td class="c-table__cell">
                 <!-- <a href="#!" class="c-btn c-btn--warning u-mr-small">Edit</a> -->
-                <router-link :to="{name: 'edit', params: {key:item['.key']} }" class="c-btn c-btn--warning u-mr-small">Edit {{ item['.key'] }}</router-link>
+                <router-link :to="{name: 'edit', params: {key:book['.key']} }" class="c-btn c-btn--warning u-mr-small">Edit {{ book['.key'] }}</router-link>
                 <a href="#!" class="c-btn c-btn--danger u-mr-small">Delete</a>
               </td>
-              
+
             </tr>
             <!-- <tr class="c-table__row">
               <td class="c-table__cell"><span class="u-text-mute">00450</span></td>
@@ -85,14 +85,14 @@
     name: "AllBooks",
     data () {
       return {
-        items: [],
+        books: [],
       }
     },
     firebase: {
-      items: booksRef
+      books: booksRef
     },
     methods: {
-      
+
     }
   }
 </script>

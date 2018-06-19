@@ -22,7 +22,7 @@
           <!-- <dashboard/>
           <all-books/>
           <editbook/> -->
-          <router-view></router-view>
+          <router-view/>
         </div> <!-- eof .container -->
       </main>
   </section>

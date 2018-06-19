@@ -8,7 +8,7 @@
     <div>
       <a @click="$router.go(-1)" href="#!" class="c-btn c-btn--danger u-mr-small">Go back</a>
     </div>
-    
+
 
   </div><!-- // .row -->
 </template>
@@ -18,20 +18,28 @@
 
   export default {
     name: "editbook",
-    data () {
+    data() {
       return {
-        items: [],
-        bookId: "NULL",
+        books: [],
+        bookId: null,
       }
     },
     created() {
       this.bookId = this.$route.params.key;
     },
+
+    // Todo: EXEMPLE
+
+    // https://appdividend.com/2018/04/21/vue-firebase-crud-example/#Step_11_Update_the_data_to_the_Firebase
+    updateItem() {
+      this.$firebaseRefs.items.child(this.$route.params.id).set(this.newItem);
+      this.$router.push('/index')
+    },
     firebase: {
-      items: booksRef
+      books: booksRef
     },
     methods: {
-      
+
     }
   }
 </script>
