@@ -65,7 +65,7 @@
 
 <script>
   import FBS from '../firebase/service';
-  import MainMenu from './main-menu'
+  import MainMenu from './main-menu';
   export default {
     name: "Test",
     components: { MainMenu },
@@ -110,8 +110,8 @@
         //vm.fileSelected = event.target.files[0]
       },
       _getCover() {
-        FBS.getCover('pic_1.jpg');
-        // console.log(FBS.getCover('pic_1.jpg'));
+        let test = FBS.getCover('pic_1.jpg');
+        console.log(test);
       },
       onFileUpload () {
         const vm = this;

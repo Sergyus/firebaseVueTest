@@ -1,4 +1,3 @@
-import Vue from 'vue';
 import {db, storage} from "./firebase";
 
 let booksRef = db.ref('books');
@@ -16,12 +15,16 @@ export default {
       booksRef.child(key).remove()
     }
   },
+
   getCover(img = 'pic_1.jpg') {
 
-    var imagesRef = storage.ref().child('cover/'+img);
-    var spaceRef = storage.ref().child('cover/'+img);
+    let imgRef = storage.ref().child('cover/' + img);
 
-    console.log(imagesRef.getDownloadURL());
+    imgRef.getDownloadURL()
+      .then(function (url) {
+
+      }).catch(error => console.log('error', error))
+
 
     // storage.ref().child('cover/'+img).getDownloadURL().then(url => {
     //   console.log(url);
@@ -47,7 +50,6 @@ export default {
   getBook(bookSlug) {
     return db.collection('books').where('slug', '==', bookSlug).get()
   },
-
 
 
   // deleteItem(key) {
