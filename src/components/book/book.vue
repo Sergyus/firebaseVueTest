@@ -58,9 +58,9 @@
 
 <script>
   import axios from 'axios';
+  import {ASSES_BASE_URL} from '../../config/config';
   import './book.scss';
-  import MainMenu from '../main-menu'
-
+  import MainMenu from '../main-menu';
   export default {
     components: { MainMenu },
     data() {
@@ -70,8 +70,7 @@
       }
     },
     created() {
-      // add firebase url here
-      axios.get("http://localhost:8080/static/books.json")
+      axios.get(ASSES_BASE_URL+"/static/books.json")
         .then(response => {
           let bookId = this.$route.params.id;
           this.books = response.data.books;
@@ -83,4 +82,3 @@
     }
   }
 </script>
-

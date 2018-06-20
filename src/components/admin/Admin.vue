@@ -1,6 +1,6 @@
 <template>
   <div>
-    <login v-if="!user"></login>
+    <login v-cloak v-if="!user"></login>
     <!--<ui-login v-if="!user"></ui-login>-->
 
     <section class="o-page" v-else>
@@ -59,7 +59,7 @@
 </script>
 
 <style scoped>
-
+  [v-cloak] {display: none}
 </style>
 
 <!--https://forum.vuejs.org/t/dynamic-components-with-dynamic-imports/20703/3-->
