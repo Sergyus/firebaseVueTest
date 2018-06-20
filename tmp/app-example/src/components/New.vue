@@ -54,11 +54,11 @@ export default {
   },
   methods: {
     saveBook () {
-      const vm = this
+      const vm = this;
       const bookData = {
         title: vm.bookTitle,
         slug: UtilityService.stringToSlug(vm.bookTitle)
-      }
+      };
       vm.$store.dispatch(CREATE_BOOK, bookData)
         .then(function () {
           vm.$router.push('/')

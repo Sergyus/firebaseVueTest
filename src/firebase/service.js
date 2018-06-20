@@ -1,12 +1,8 @@
 import Vue from 'vue';
-import {db} from "./firebase";
+import {db, storage} from "./firebase";
 
 let booksRef = db.ref('books');
-let VM = new Vue({
-  firebase: {
-    books: booksRef
-  },
-});
+let uploadRef = storage.ref().child('cover');
 
 export default {
   createBooks(bookData) {
@@ -20,6 +16,22 @@ export default {
       booksRef.child(key).remove()
     }
   },
+  getCover(img = 'pic_1.jpg') {
+
+    var imagesRef = storage.ref().child('cover/'+img);
+    var spaceRef = storage.ref().child('cover/'+img);
+
+    console.log(imagesRef.getDownloadURL());
+
+    // storage.ref().child('cover/'+img).getDownloadURL().then(url => {
+    //   console.log(url);
+    // });
+  },
+  // uploadCover(coverFile) {
+  //   const ref = app.storage().ref()
+  //   const task = ref.child(coverFile.name).put(coverFile.file, coverFile.metadata)
+  //   return task
+  // },
 
   //============= OLD =================================
 
@@ -35,14 +47,17 @@ export default {
   getBook(bookSlug) {
     return db.collection('books').where('slug', '==', bookSlug).get()
   },
-  uploadCover(coverFile) {
-    const ref = app.storage().ref()
-    const task = ref.child(coverFile.name).put(coverFile.file, coverFile.metadata)
-    return task
-  }
+
 
 
   // deleteItem(key) {
   //   this.$firebaseRefs.books.child(key).remove();
   // }
 }
+
+
+// pictures.putString(image, `data_url`).then(function(snapshot) {
+//   console.log('Uploaded a data_url string!');
+//   var url = snapshot.downloadURL;
+//  add it to firestore
+// });
