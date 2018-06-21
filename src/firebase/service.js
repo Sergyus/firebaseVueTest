@@ -1,4 +1,5 @@
 import {db, storage} from "./firebase";
+import {ADD_BOOK} from "../../tmp/app-example/src/store/books/books.mutations.type";
 
 let booksRef = db.ref('books');
 let uploadRef = storage.ref().child('cover');
@@ -18,17 +19,12 @@ export default {
 
   getCover(img = 'pic_1.jpg') {
 
-    let imgRef = storage.ref().child('cover/' + img);
+    let imgRef = storage.ref('cover').child(img);
 
-    imgRef.getDownloadURL()
-      .then(function (url) {
+    imgRef.getDownloadURL().then(url => {
 
-      }).catch(error => console.log('error', error))
+    });
 
-
-    // storage.ref().child('cover/'+img).getDownloadURL().then(url => {
-    //   console.log(url);
-    // });
   },
   // uploadCover(coverFile) {
   //   const ref = app.storage().ref()
