@@ -66,6 +66,7 @@
 <script>
   import FBS from '../firebase/service';
   import MainMenu from './main-menu';
+  import { mapGetters, mapMutations, mapActions } from 'vuex';
   export default {
     name: "Test",
     components: { MainMenu },
@@ -83,11 +84,21 @@
       books: FBS.getBooks(),
     },
     mounted() {
-      this.test();
+      this.test()
+    },
+    computed: {
+      ...mapGetters([
+        'isLoggedIn',
+        'testmes'
+      ]),
+      // ...mapActions([
+      // ])
     },
     methods: {
-      test(){
-        //console.log(this.books);
+      test() {
+
+        //console.log(this);
+        //console.log(this.$store.getters.isAuthenticated);
       },
       addBook() {
         FBS.createBooks({

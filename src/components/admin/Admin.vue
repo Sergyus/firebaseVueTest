@@ -49,6 +49,9 @@
       }
     },
     methods: {
+      test() {
+        //console.log(this.$store.getters.isLoggedIn);
+      },
       signOut() {
         firebase.auth().signOut().then(() => {
           this.user = null;

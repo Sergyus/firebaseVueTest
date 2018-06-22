@@ -1,9 +1,8 @@
-import {db, storage} from "./firebase";
+import {db, storage, auth} from "./firebase";
 import {ADD_BOOK} from "../../tmp/app-example/src/store/books/books.mutations.type";
 
 let booksRef = db.ref('books');
 let uploadRef = storage.ref().child('cover');
-let www = 'null';
 
 export default {
   createBooks(bookData) {
@@ -41,6 +40,9 @@ export default {
       imgRef.getDownloadURL().then(url => {
     });
   },
+  logout() {
+    return auth.signOut()
+  },
   // uploadCover(coverFile) {
   //   const ref = app.storage().ref()
   //   const task = ref.child(coverFile.name).put(coverFile.file, coverFile.metadata)
@@ -49,14 +51,10 @@ export default {
 
   //============= OLD =================================
 
-  checkAuth() {
-    return app.auth().currentUser
-  },
+  // user.updateProfile({displayName: 'Sergyus Mes'});
+
   login(credentials) {
     return app.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-  },
-  logout() {
-    return app.auth().signOut()
   },
   getBook(bookSlug) {
     return db.collection('books').where('slug', '==', bookSlug).get()

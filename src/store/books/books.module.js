@@ -6,24 +6,15 @@ const state = {
   books: []
 };
 
+const getters = {
+  testmes: state => state.books
+};
+
 const actions = {
-  [GET_BOOKS](context) {
+  [GET_BOOKS](context) { //context.commit(ADD_BOOK, book);
     return new Promise((resolve, reject) => {
-      FireBaseService.getBooks()
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            const book = {
-              'id': doc.id,
-              'slug': doc.data().slug,
-              'title': doc.data().title
-            };
-            context.commit(ADD_BOOK, book);
-            resolve(true)
-          })
-        })
-        .catch(error => {
-          reject(error)
-        })
+      FireBaseService.getBooks();
+      console.log(FireBaseService.getBooks());
     })
   },
   [GET_BOOK](context, bookSlug) {
@@ -83,5 +74,6 @@ const mutations = {
 export default {
   state,
   actions,
-  mutations
+  mutations,
+  getters
 }
