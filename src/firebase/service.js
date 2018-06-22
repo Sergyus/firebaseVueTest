@@ -8,7 +8,6 @@ let www = 'null';
 export default {
   createBooks(bookData) {
 
-    let _Promise;
     let metadata = { contentType: bookData.file.type };
     let uploadTask = storage.ref('images').child(bookData.file.name).put(bookData.file, metadata);
 
