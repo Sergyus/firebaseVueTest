@@ -14,15 +14,15 @@
             <form v-on:submit.prevent="addBook">
               <div class="form-group">
                 <label>Book Name:</label>
-                <input type="text" class="form-control" v-model="newBook.name"/>
+                <input type="text" class="form-control" v-model="newBook.name" required/>
               </div>
               <div class="form-group">
                 <label>Book Price:</label>
-                <input type="text" class="form-control" v-model="newBook.price"/>
+                <input type="text" class="form-control" v-model="newBook.price" required/>
               </div>
               <div class="form-group">
-                <input type="file" @change="onFileSelected">
-                <button @click="onFileUpload">Upload</button>
+                <input type="file" @change="onFileSelected" required/>
+                <!--<button @click="onFileUpload">Upload</button>-->
               </div>
               <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Add Book"/>
@@ -48,7 +48,7 @@
           <tr v-for="book of books" :key="book['.key']">
             <td>{{ book.name }}</td>
             <td>{{ book.price }}</td>
-            <td>{{ book.cover }}</td>
+            <td><img :src="book.image" alt=""></td>
             <td>
               <!--<router-link :to="{ name: 'Test', params: {id: book['.key']} }" class="btn btn-warning">-->
               <!--Edit-->
@@ -74,10 +74,9 @@
         newBook: {
           name: '',
           price: '',
-          cover: ''
+          file: '',
         },
         books: [],
-        uploads: null
       }
     },
     firebase: {
@@ -85,7 +84,6 @@
     },
     mounted() {
       this.test();
-      this._getCover();
     },
     methods: {
       test(){
@@ -95,45 +93,18 @@
         FBS.createBooks({
           name: this.newBook.name,
           price: this.newBook.price,
-          cover: this.newBook.cover
+          file:  this.newBook.file
         }).then(() => {
           this.newBook.name = '';
           this.newBook.price = '';
+          this.newBook.file = '';
         }).catch(error => {
           console.log(error);
         });
       },
       onFileSelected(even) {
-        // const vm = this;
-        this.newBook.cover = event.target.files[0].name;
-        // console.log(event.target.files[0].name);
-        //vm.fileSelected = event.target.files[0]
-      },
-      _getCover() {
-        let test = FBS.getCover('pic_1.jpg');
-        console.log(test);
-      },
-      onFileUpload () {
-        const vm = this;
-        const file = vm.fileSelected
-        const name = (+new Date()) + '-' + vm.currentBookData.slug
-        const metadata = {
-          contentType: file.type
-        };
-        const coverFile = {
-          file: file,
-          name: name,
-          metadata: metadata
-        };
-        // FBS.uploadCover(coverFile)
-        //   .then((snapshot) => {
-        //     const coverUrl = snapshot.downloadURL
-        //     vm.currentBookData.coverUrl = coverUrl
-        //     vm.updateBook()
-        //   })
-        //   .catch((error) => {
-        //     console.error(error)
-        //   })
+        this.newBook.file = even.target.files[0];
+        this.newBook.cover = even.target.files[0].name;
       },
       delBook(key) {
         FBS.deleteBook(key)

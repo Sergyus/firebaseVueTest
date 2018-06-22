@@ -3,10 +3,31 @@ import {ADD_BOOK} from "../../tmp/app-example/src/store/books/books.mutations.ty
 
 let booksRef = db.ref('books');
 let uploadRef = storage.ref().child('cover');
+let www = 'null';
 
 export default {
   createBooks(bookData) {
-    return booksRef.push(bookData)
+
+    let _Promise;
+    let metadata = { contentType: bookData.file.type };
+    let uploadTask = storage.ref('images').child(bookData.file.name).put(bookData.file, metadata);
+
+    return new Promise((resolve, reject) => {
+      uploadTask.then(function (snapshot) {
+        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+          resolve(true);
+          booksRef.push({
+            name: bookData.name,
+            price: bookData.price,
+            image: downloadURL
+          })
+        });
+      });
+    }, error => {
+      reject(error);
+    });
+
+    //return booksRef.push(bookData)
   },
   getBooks() {
     return booksRef;
@@ -16,15 +37,10 @@ export default {
       booksRef.child(key).remove()
     }
   },
-
   getCover(img = 'pic_1.jpg') {
-
     let imgRef = storage.ref('cover').child(img);
-
-    imgRef.getDownloadURL().then(url => {
-
+      imgRef.getDownloadURL().then(url => {
     });
-
   },
   // uploadCover(coverFile) {
   //   const ref = app.storage().ref()
