@@ -1,14 +1,18 @@
+import Vue from 'vue';
+import store from "../store";
+import router from "../router";
 import {db, storage, auth, booksRef, uploadRef} from "./firebase";
+import {CHECK_AUTH} from "../store/authentication/authentication.actions.type";
 import {ADD_BOOK} from "../../tmp/app-example/src/store/books/books.mutations.type";
 
 export default {
   createBooks(bookData) {
 
-    let metadata = { contentType: bookData.file.type };
+    let metadata = {contentType: bookData.file.type};
     let uploadTask = uploadRef.child(bookData.file.name).put(bookData.file, metadata);
 
     return new Promise((resolve, reject) => {
-      uploadTask.then(function (snapshot) {
+      uploadTask.then(function(snapshot) {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           resolve(true);
           booksRef.push({
@@ -49,12 +53,12 @@ export default {
 
   // user.updateProfile({displayName: 'Sergyus Mes'});
 
-  login(credentials) {
-    return app.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-  },
-  getBook(bookSlug) {
-    return db.collection('books').where('slug', '==', bookSlug).get()
-  },
+  // login(credentials) {
+  //   return app.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+  // },
+  // getBook(bookSlug) {
+  //   return db.collection('books').where('slug', '==', bookSlug).get()
+  // },
 }
 
 

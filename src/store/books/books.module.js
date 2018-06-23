@@ -1,41 +1,55 @@
 import FireBaseService from '../../firebase/service';
 import {CREATE_BOOK, GET_BOOK, GET_BOOKS, UPDATE_BOOK, DELETE_BOOK} from './books.actions.type';
 import {ADD_BOOK} from './books.mutations.type';
+import {booksRef} from "../../firebase/firebase";
+import Vue from 'vue';
+
 
 const state = {
   books: []
 };
 
 const getters = {
-  testmes: state => state.books
+  getAllBooks: state => state.books
 };
 
 const actions = {
-  [GET_BOOKS](context) { //context.commit(ADD_BOOK, book);
-    return new Promise((resolve, reject) => {
-      FireBaseService.getBooks();
-      console.log(FireBaseService.getBooks());
-    })
+  [GET_BOOKS](context) { //context.commit(ADD_BOOKS, book);
+
+    const vm = new Vue({
+      firebase: {
+        allBooks: FireBaseService.getBooks(),
+      },
+    });
+
+
+
+    // context.commit(ADD_BOOK, vm.allBooks)
   },
-  [GET_BOOK](context, bookSlug) {
-    return new Promise((resolve, reject) => {
-      FireBaseService.getBook(bookSlug)
-        .then(querySnapshot => {
-          querySnapshot.forEach(doc => {
-            const book = {
-              'id': doc.id,
-              'slug': doc.data().slug,
-              'title': doc.data().title,
-              'author': doc.data().author
-            };
-            resolve(book)
-          })
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
-  },
+
+
+
+
+
+  // [GET_BOOK](context, bookSlug) {
+  //   return new Promise((resolve, reject) => {
+  //     FireBaseService.getBook(bookSlug)
+  //       .then(querySnapshot => {
+  //         querySnapshot.forEach(doc => {
+  //           const book = {
+  //             'id': doc.id,
+  //             'slug': doc.data().slug,
+  //             'title': doc.data().title,
+  //             'author': doc.data().author
+  //           };
+  //           resolve(book)
+  //         })
+  //       })
+  //       .catch(error => {
+  //         reject(error)
+  //       })
+  //   })
+  // },
   [CREATE_BOOK](context, bookData) {
     return new Promise((resolve, reject) => {
       FireBaseService.createBooks(bookData)
@@ -63,34 +77,20 @@ const actions = {
         })
     })
   },
-  [DELETE_BOOK](context, data) {
-    return new Promise((resolve, reject) => {
-      FireBaseService.deleteBook(data.key)
-        .then(() => {
-          //store.commit(REMOVE_BOOK, key);
-          resolve(true)
-        })
-        .catch(error => {
-          reject(error)
-        });
+  async [DELETE_BOOK](context, data) {
+    await data;
+    return Promise.all([
+      FireBaseService.deleteBook(data.key),
       FireBaseService.deleteFileStorage(data.filename)
-        .then(() => {
-          resolve(true)
-        })
-        .catch(error => {
-          reject(error)
-        });
-    })
-  },
+    ]);
+  }
+
 };
 
 const mutations = {
-  [ADD_BOOK](state, book) {
-    state.books.push(book)
-  },
-  // [REMOVE_BOOK](state, book) {
-  //   state.books.push(book)
-  // }
+  [ADD_BOOK] (state, book) {
+    //state.books.push(book)
+  }
 };
 
 export default {

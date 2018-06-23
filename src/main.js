@@ -7,6 +7,7 @@ import VueFire from 'vuefire';
 import './assets/styles/main.min.css';
 import store from './store';
 import {CHECK_AUTH} from "./store/authentication/authentication.actions.type";
+import {GET_BOOKS} from "./store/books/books.actions.type";
 
 Vue.use(VueFire);
 
@@ -15,6 +16,7 @@ Vue.config.productionTip = false;
 new Vue({
   beforeCreate() {
     store.dispatch(CHECK_AUTH);
+    store.dispatch(GET_BOOKS);
   },
   router,
   store,

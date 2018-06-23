@@ -49,9 +49,6 @@
             <td>{{ book.price }}</td>
             <td><img :src="book.image.url" alt=""></td>
             <td>
-              <!--<router-link :to="{ name: 'Test', params: {id: book['.key']} }" class="btn btn-warning">-->
-              <!--Edit-->
-              <!--</router-link>-->
               <button @click="delBook(book['.key'], book.image.name)" class="btn btn-danger">Delete</button>
             </td>
           </tr>
@@ -65,13 +62,14 @@
 <script>
   import FBS from '../firebase/service';
   import MainMenu from './main-menu';
-  import { mapGetters, mapMutations, mapActions } from 'vuex';
   import store from '../store';
+  import {mapGetters, mapMutations, mapActions} from 'vuex';
   import {DELETE_BOOK} from "../store/books/books.actions.type";
+
   export default {
     name: "Test",
-    components: { MainMenu },
-    data () {
+    components: {MainMenu},
+    data() {
       return {
         newBook: {
           name: '',
@@ -85,7 +83,7 @@
       books: FBS.getBooks(),
     },
     mounted() {
-      //this.test()
+      this.test()
     },
     computed: {
       ...mapGetters([
@@ -97,6 +95,10 @@
       // ...mapActions([
       //   'deleteBook'
       // ]),
+      test() {
+        //console.log(this.$firebaseRefs);
+        //console.log(this.books);
+      },
       delBook(key, filename) {
         store.dispatch(DELETE_BOOK, {key, filename});
       },
@@ -104,7 +106,7 @@
         FBS.createBooks({
           name: this.newBook.name,
           price: this.newBook.price,
-          file:  this.newBook.file
+          file: this.newBook.file
         }).then(() => {
           this.newBook.name = '';
           this.newBook.price = '';
@@ -122,7 +124,6 @@
     }
   }
 </script>
-
 
 
 <!-- TODO: .limitToLast(25)-->
