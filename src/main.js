@@ -9,6 +9,7 @@ import store from './store';
 import {CHECK_AUTH} from "./store/authentication/authentication.actions.type";
 
 Vue.use(VueFire);
+
 Vue.config.productionTip = false;
 
 new Vue({

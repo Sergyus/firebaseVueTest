@@ -9,7 +9,7 @@ export default {
 
     return new Promise((resolve, reject) => {
       uploadTask.then(function (snapshot) {
-        uploadTask.snapshot.ref.getDownloadURL().then(function (downloadURL) {
+        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           resolve(true);
           booksRef.push({
             name: bookData.name,
@@ -24,8 +24,6 @@ export default {
     }, error => {
       reject(error);
     });
-
-    //return booksRef.push(bookData)
   },
   getBooks() {
     return booksRef;
@@ -34,11 +32,6 @@ export default {
     if(confirm('Вы действительно хотите удалить эту книгу?')) {
       return booksRef.child(key).remove();
     }
-  },
-  getCover(img = 'pic_1.jpg') {
-    let imgRef = storage.ref('cover').child(img);
-      imgRef.getDownloadURL().then(url => {
-    });
   },
   logout() {
     return auth.signOut()
@@ -62,11 +55,6 @@ export default {
   getBook(bookSlug) {
     return db.collection('books').where('slug', '==', bookSlug).get()
   },
-
-
-  // deleteItem(key) {
-  //   this.$firebaseRefs.books.child(key).remove();
-  // }
 }
 
 
