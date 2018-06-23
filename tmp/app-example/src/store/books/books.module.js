@@ -73,13 +73,13 @@ const actions = {
     })
   }
 
-}
+};
 
 const mutations = {
   [ADD_BOOK] (state, book) {
     state.books.push(book)
   }
-}
+};
 
 export default {
   state,

@@ -22,7 +22,6 @@
               </div>
               <div class="form-group">
                 <input type="file" @change="onFileSelected" required/>
-                <!--<button @click="onFileUpload">Upload</button>-->
               </div>
               <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Add Book"/>
@@ -48,12 +47,12 @@
           <tr v-for="book of books" :key="book['.key']">
             <td>{{ book.name }}</td>
             <td>{{ book.price }}</td>
-            <td><img :src="book.image" alt=""></td>
+            <td><img :src="book.image.url" alt=""></td>
             <td>
               <!--<router-link :to="{ name: 'Test', params: {id: book['.key']} }" class="btn btn-warning">-->
               <!--Edit-->
               <!--</router-link>-->
-              <button @click="delBook(book['.key'])" class="btn btn-danger">Delete</button>
+              <button @click="delBook(book['.key'], book.image.name)" class="btn btn-danger">Delete</button>
             </td>
           </tr>
           </tbody>
@@ -67,6 +66,8 @@
   import FBS from '../firebase/service';
   import MainMenu from './main-menu';
   import { mapGetters, mapMutations, mapActions } from 'vuex';
+  import store from '../store';
+  import {DELETE_BOOK} from "../store/books/books.actions.type";
   export default {
     name: "Test",
     components: { MainMenu },
@@ -84,21 +85,20 @@
       books: FBS.getBooks(),
     },
     mounted() {
-      this.test()
+      //this.test()
     },
     computed: {
       ...mapGetters([
         'isLoggedIn',
         'testmes'
       ]),
-      // ...mapActions([
-      // ])
     },
     methods: {
-      test() {
-
-        //console.log(this);
-        //console.log(this.$store.getters.isAuthenticated);
+      // ...mapActions([
+      //   'deleteBook'
+      // ]),
+      delBook(key, filename) {
+        store.dispatch(DELETE_BOOK, {key, filename});
       },
       addBook() {
         FBS.createBooks({
@@ -115,11 +115,10 @@
       },
       onFileSelected(even) {
         this.newBook.file = even.target.files[0];
-        this.newBook.cover = even.target.files[0].name;
       },
-      delBook(key) {
-        FBS.deleteBook(key)
-      }
+      // delBook(key) {
+      //   FBS.deleteBook(key)
+      // }
     }
   }
 </script>

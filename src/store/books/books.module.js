@@ -1,5 +1,5 @@
 import FireBaseService from '../../firebase/service';
-import {CREATE_BOOK, GET_BOOK, GET_BOOKS, UPDATE_BOOK} from './books.actions.type';
+import {CREATE_BOOK, GET_BOOK, GET_BOOKS, UPDATE_BOOK, DELETE_BOOK} from './books.actions.type';
 import {ADD_BOOK} from './books.mutations.type';
 
 const state = {
@@ -62,13 +62,35 @@ const actions = {
           })
         })
     })
-  }
+  },
+  [DELETE_BOOK](context, data) {
+    return new Promise((resolve, reject) => {
+      FireBaseService.deleteBook(data.key)
+        .then(() => {
+          //store.commit(REMOVE_BOOK, key);
+          resolve(true)
+        })
+        .catch(error => {
+          reject(error)
+        });
+      FireBaseService.deleteFileStorage(data.filename)
+        .then(() => {
+          resolve(true)
+        })
+        .catch(error => {
+          reject(error)
+        });
+    })
+  },
 };
 
 const mutations = {
   [ADD_BOOK](state, book) {
     state.books.push(book)
-  }
+  },
+  // [REMOVE_BOOK](state, book) {
+  //   state.books.push(book)
+  // }
 };
 
 export default {

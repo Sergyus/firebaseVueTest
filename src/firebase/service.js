@@ -1,14 +1,11 @@
-import {db, storage, auth} from "./firebase";
+import {db, storage, auth, booksRef, uploadRef} from "./firebase";
 import {ADD_BOOK} from "../../tmp/app-example/src/store/books/books.mutations.type";
-
-let booksRef = db.ref('books');
-let uploadRef = storage.ref().child('cover');
 
 export default {
   createBooks(bookData) {
 
     let metadata = { contentType: bookData.file.type };
-    let uploadTask = storage.ref('images').child(bookData.file.name).put(bookData.file, metadata);
+    let uploadTask = uploadRef.child(bookData.file.name).put(bookData.file, metadata);
 
     return new Promise((resolve, reject) => {
       uploadTask.then(function (snapshot) {
@@ -17,7 +14,10 @@ export default {
           booksRef.push({
             name: bookData.name,
             price: bookData.price,
-            image: downloadURL
+            image: {
+              name: bookData.file.name,
+              url: downloadURL
+            }
           })
         });
       });
@@ -31,8 +31,8 @@ export default {
     return booksRef;
   },
   deleteBook(key) {
-    if (confirm('Вы действительно хотите удалить эту книгу?')) {
-      booksRef.child(key).remove()
+    if(confirm('Вы действительно хотите удалить эту книгу?')) {
+      return booksRef.child(key).remove();
     }
   },
   getCover(img = 'pic_1.jpg') {
@@ -42,6 +42,9 @@ export default {
   },
   logout() {
     return auth.signOut()
+  },
+  deleteFileStorage(name) {
+    return uploadRef.child(name).delete();
   },
   // uploadCover(coverFile) {
   //   const ref = app.storage().ref()

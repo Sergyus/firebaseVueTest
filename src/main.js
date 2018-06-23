@@ -4,8 +4,8 @@ import router from './router';
 import pnprogress from './router/nprogress';
 import filters from './filters/filters';
 import VueFire from 'vuefire';
-import './assets/styles/main.min.css'
-import store from './store'
+import './assets/styles/main.min.css';
+import store from './store';
 import {CHECK_AUTH} from "./store/authentication/authentication.actions.type";
 
 Vue.use(VueFire);
