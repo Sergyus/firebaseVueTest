@@ -21,7 +21,7 @@
                 <input type="text" class="form-control" v-model="newBook.price" required/>
               </div>
               <div class="form-group">
-                <input type="file" @change="onFileSelected" required/>
+                <input type="file" @change="onFileSelected" accept="image/jpeg,image/png" v-if="uploadReady" required/>
               </div>
               <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Add Book"/>
@@ -63,7 +63,7 @@
   import FBS from '../firebase/service';
   import MainMenu from './main-menu';
   import store from '../store';
-  import {mapGetters, mapMutations, mapActions} from 'vuex';
+  import {mapGetters, mapActions} from 'vuex';
   import {DELETE_BOOK} from "../store/books/books.actions.type";
 
   export default {
@@ -77,6 +77,7 @@
           file: '',
         },
         books: [],
+        uploadReady: true,
       }
     },
     firebase: {
@@ -86,18 +87,13 @@
       this.test()
     },
     computed: {
-      ...mapGetters([
-        'isLoggedIn',
-        'testmes'
-      ]),
     },
     methods: {
       // ...mapActions([
       //   'deleteBook'
       // ]),
       test() {
-        //console.log(this.$firebaseRefs);
-        //console.log(this.books);
+        console.log(this);
       },
       delBook(key, filename) {
         store.dispatch(DELETE_BOOK, {key, filename});
@@ -108,9 +104,7 @@
           price: this.newBook.price,
           file: this.newBook.file
         }).then(() => {
-          this.newBook.name = '';
-          this.newBook.price = '';
-          this.newBook.file = '';
+          this.clear();
         }).catch(error => {
           console.log(error);
         });
@@ -118,13 +112,13 @@
       onFileSelected(even) {
         this.newBook.file = even.target.files[0];
       },
-      // delBook(key) {
-      //   FBS.deleteBook(key)
-      // }
+      clear() {
+        this.newBook = '';
+        this.uploadReady = false;
+        this.$nextTick(() => {
+          this.uploadReady = true;
+        })
+      },
     }
   }
 </script>
-
-
-<!-- TODO: .limitToLast(25)-->
-<!--https://www.npmjs.com/package/vuefire-->

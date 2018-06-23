@@ -13,11 +13,10 @@ Vue.use(VueFire);
 
 Vue.config.productionTip = false;
 
+store.dispatch(CHECK_AUTH);
+store.dispatch(GET_BOOKS);
+
 new Vue({
-  beforeCreate() {
-    store.dispatch(CHECK_AUTH);
-    store.dispatch(GET_BOOKS);
-  },
   router,
   store,
   render: h => h(App)

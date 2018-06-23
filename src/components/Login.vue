@@ -1,7 +1,7 @@
 <template>
   <section class="books">
 
-    <div class="o-page__card" v-if="!user">
+    <div class="o-page__card" v-if="!isLoggedIn">
       <div class="c-card u-mb-xsmall">
         <header class="c-card__header u-pt-large">
           <h1 class="u-h3 u-text-center u-mb-zero">Welcome back! Please login.</h1>
@@ -28,7 +28,7 @@
         <header class="c-card__header u-pt-large">
           <h1 class="u-h3 u-mb-zero">You are logged in</h1>
         </header>
-        <button @click="signOut" class="c-btn c-btn--info" type="submit">Sign Out</button>
+        <button @click="logout" class="c-btn c-btn--info" type="submit">Sign Out</button>
       </div>
     </div>
 
@@ -36,37 +36,34 @@
 </template>
 
 <script>
-  import firebase from 'firebase/app';
+  import FBS from '../firebase/service';
+  import {mapGetters, mapActions} from 'vuex';
   export default {
-    beforeCreate: function () {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          this.user = user;
-        }
-      })
-    },
-    data: function () {
+    data() {
       return {
-        user: null,
         email: "sergey.misurko@gmail.com",
         password: "Aa1234567_"
       };
     },
+    computed: {
+      ...mapGetters([
+        'user',
+        'isLoggedIn'
+      ]),
+    },
     methods: {
-      signIn: function () {
-        firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
-          user => {
-            //this.$router.replace('admin');
-          },
-          error => {
-            alert(error.message);
-          }
-        );
-      },
-      signOut: function () {
-        firebase.auth().signOut().then(() => {
-          this.user = null
-        }).catch(err => console.log(err))
+      ...mapActions([
+        'logout'
+      ]),
+      signIn() {
+        FBS.signIn({
+          email: this.email,
+          password: this.password
+        }).then(() => {
+          this.$router.replace('dashboard');
+        }, error => {
+          alert(error.message);
+        })
       },
     }
   };

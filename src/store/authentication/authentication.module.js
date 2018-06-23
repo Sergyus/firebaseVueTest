@@ -1,5 +1,6 @@
-import {auth, db} from '../../firebase/firebase';
-import {CHECK_AUTH, LOGIN, LOGOUT} from './authentication.actions.type';
+import {auth} from '../../firebase/firebase';
+import FBS from '../../firebase/service';
+import {CHECK_AUTH, LOGOUT} from './authentication.actions.type';
 import {PURGE_AUTH, SET_AUTH} from './authentication.mutations.type';
 
 const state = {
@@ -9,10 +10,11 @@ const state = {
 
 const getters = {
   isLoggedIn: (state) => state.isLoggedIn,
+  user: (state) => state.user
 };
 
 const actions = {
-  async [CHECK_AUTH](context) {
+  [CHECK_AUTH](context) {
     auth.onAuthStateChanged(function (user) {
       if (user) {
         context.commit(SET_AUTH, user)
@@ -21,26 +23,10 @@ const actions = {
       }
     });
   },
-  [LOGIN](context, credentials) {
-    return new Promise((resolve, reject) => {
-      db.login(credentials)
-        .then(user => {
-          let userData = {
-            email: user.email,
-            uid: user.uid
-          };
-          context.commit(SET_AUTH, userData);
-          resolve(user)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
-  },
   [LOGOUT](context) {
-    db.logout()
+    FBS.logout()
       .then(function () {
-        window.location.reload()
+        //window.location.reload()
       })
       .catch(error => {
         return error

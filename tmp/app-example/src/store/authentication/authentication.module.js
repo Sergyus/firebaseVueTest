@@ -47,13 +47,8 @@ const actions = {
     })
   },
   [LOGOUT] (context) {
-    FireBaseService.logout()
-      .then(function () {
-        window.location.reload()
-      })
-      .catch(error => {
-        return error
-      })
+    FireBaseService.logout();
+    console.log('www');
   }
 }
 

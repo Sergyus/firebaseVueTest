@@ -37,8 +37,12 @@ export default {
       return booksRef.child(key).remove();
     }
   },
+  signIn(data) {
+    return auth.signInWithEmailAndPassword(data.email, data.password);
+  },
   logout() {
-    return auth.signOut()
+    router.replace('/');
+    return auth.signOut().catch(err => console.log(err))
   },
   deleteFileStorage(name) {
     return uploadRef.child(name).delete();

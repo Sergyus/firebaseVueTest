@@ -1,7 +1,6 @@
 <template>
   <div>
-    <login v-cloak v-if="!user"></login>
-    <!--<ui-login v-if="!user"></ui-login>-->
+    <login v-cloak v-if="!isLoggedIn"></login>
 
     <section class="o-page" v-else>
       <sidebar></sidebar>
@@ -13,8 +12,8 @@
           <span class="c-sidebar-toggle__bar"></span>
           <span class="c-sidebar-toggle__bar"></span>
           </button>
-          <h2 class="c-navbar__title u-mr-auto">{{user.email}}</h2>
-          <a href="#!" @click.prevent="signOut" class="c-btn c-btn--success u-mr-small">Logout</a>
+          <h2 class="c-navbar__title u-mr-auto">{{user.name}}</h2>
+          <a href="#" @click.prevent="logout" class="c-btn c-btn--success u-mr-small">Logout</a>
         </header>
 
         <div class="container">
@@ -27,35 +26,30 @@
 </template>
 
 <script>
-  import firebase from 'firebase/app';
   import Login from '../Login';
-  import 'vue-wysiwyg/dist/vueWysiwyg.css';
+  // import 'vue-wysiwyg/dist/vueWysiwyg.css';
   import Sidebar from './Sidebar';
+  import {mapGetters, mapActions} from 'vuex';
 
   export default {
     name: "Admin",
-    wsw: '<p>test</p>',
+    // wsw: '<p>test</p>',
     components: {Login, Sidebar,},
-    beforeCreate: function () {
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          this.user = user
-        }
-      })
+    computed: {
+      ...mapGetters([
+        'user',
+        'isLoggedIn'
+      ]),
     },
-    data() {
-      return {
-        user: null,
-      }
+    mounted() {
+      this.test()
     },
     methods: {
+      ...mapActions([
+        'logout'
+      ]),
       test() {
-        //console.log(this.$store.getters.isLoggedIn);
-      },
-      signOut() {
-        firebase.auth().signOut().then(() => {
-          this.user = null;
-        }).catch(err => console.log(err))
+        //console.log(this);
       },
     },
   }
