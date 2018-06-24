@@ -97,8 +97,8 @@
       books: FBS.getBooks()
     },
     methods: {
-      delBook(key) {
-        FBS.deleteBook(key)
+      delBook(name) {
+        FBS.deleteBook(name)
       }
     }
   }

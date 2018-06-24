@@ -8,6 +8,7 @@ import './assets/styles/main.min.css';
 import store from './store';
 import {CHECK_AUTH} from "./store/authentication/authentication.actions.type";
 import {GET_BOOKS} from "./store/books/books.actions.type";
+import './toastr/index';
 
 Vue.use(VueFire);
 

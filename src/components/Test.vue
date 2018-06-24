@@ -89,14 +89,15 @@
     computed: {
     },
     methods: {
-      // ...mapActions([
-      //   'deleteBook'
-      // ]),
       test() {
-        console.log(this);
+        //console.log(this.newBook);
       },
       delBook(key, filename) {
         store.dispatch(DELETE_BOOK, {key, filename});
+        this.$toast.success({
+          title:'Success',
+          message:'Книга удалена!'
+        })
       },
       addBook() {
         FBS.createBooks({
@@ -104,7 +105,11 @@
           price: this.newBook.price,
           file: this.newBook.file
         }).then(() => {
-          this.clear();
+          this.clearInput();
+          this.$toast.success({
+            title:'Success',
+            message:'Книга бодавлена!'
+          })
         }).catch(error => {
           console.log(error);
         });
@@ -112,8 +117,10 @@
       onFileSelected(even) {
         this.newBook.file = even.target.files[0];
       },
-      clear() {
-        this.newBook = '';
+      clearInput() {
+        this.newBook.name = '',
+        this.newBook.price = '',
+        this.newBook.file = '',
         this.uploadReady = false;
         this.$nextTick(() => {
           this.uploadReady = true;

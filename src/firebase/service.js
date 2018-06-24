@@ -8,8 +8,11 @@ import {ADD_BOOK} from "../../tmp/app-example/src/store/books/books.mutations.ty
 export default {
   createBooks(bookData) {
 
+    let hash = (+new Date).toString(36);
+    let fileName = hash +'_'+ bookData.file.name;
     let metadata = {contentType: bookData.file.type};
-    let uploadTask = uploadRef.child(bookData.file.name).put(bookData.file, metadata);
+
+    let uploadTask = uploadRef.child(fileName).put(bookData.file, metadata);
 
     return new Promise((resolve, reject) => {
       uploadTask.then(function(snapshot) {
@@ -19,7 +22,7 @@ export default {
             name: bookData.name,
             price: bookData.price,
             image: {
-              name: bookData.file.name,
+              name: fileName,
               url: downloadURL
             }
           })
@@ -32,9 +35,9 @@ export default {
   getBooks() {
     return booksRef;
   },
-  deleteBook(key) {
+  deleteBook(name) {
     if(confirm('Вы действительно хотите удалить эту книгу?')) {
-      return booksRef.child(key).remove();
+      return booksRef.child(name).remove();
     }
   },
   signIn(data) {
