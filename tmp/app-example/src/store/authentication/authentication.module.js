@@ -68,7 +68,7 @@ const mutations = {
     state.user.uid = user.uid
   },
   [PURGE_AUTH] (state) {
-    state.isAuthenticated = false
+    state.isAuthenticated = false;
     state.user = {}
     state.errors = {}
   }

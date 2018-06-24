@@ -28,7 +28,7 @@
         <header class="c-card__header u-pt-large">
           <h1 class="u-h3 u-mb-zero">You are logged in</h1>
         </header>
-        <button @click="logout" class="c-btn c-btn--info" type="submit">Sign Out</button>
+        <router-link to="admin" class="c-btn c-btn--info">Admin</router-link>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
 
 <script>
   import FBS from '../firebase/service';
-  import {mapGetters, mapActions} from 'vuex';
+  import {mapGetters} from 'vuex';
   export default {
     data() {
       return {
@@ -52,15 +52,12 @@
       ]),
     },
     methods: {
-      ...mapActions([
-        'logout'
-      ]),
       signIn() {
         FBS.signIn({
           email: this.email,
           password: this.password
         }).then(() => {
-          this.$router.replace('dashboard');
+          this.$router.replace('admin/books');
         }, error => {
           alert(error.message);
         })

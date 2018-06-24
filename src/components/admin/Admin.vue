@@ -1,8 +1,6 @@
 <template>
   <div>
-    <login v-cloak v-if="!isLoggedIn"></login>
-
-    <section class="o-page" v-else>
+    <section class="o-page">
       <sidebar></sidebar>
       <main class="o-page__content">
 
@@ -34,7 +32,7 @@
   export default {
     name: "Admin",
     // wsw: '<p>test</p>',
-    components: {Login, Sidebar,},
+    components: {Login, Sidebar},
     computed: {
       ...mapGetters([
         'user',
@@ -42,12 +40,18 @@
       ]),
     },
     mounted() {
+      this.redirectToLogin();
       this.test()
     },
     methods: {
       ...mapActions([
         'logout'
       ]),
+      redirectToLogin() {
+        if(!this.isLoggedIn) {
+          this.$router.push('/login')
+        }
+      },
       test() {
         //console.log(this);
       },
