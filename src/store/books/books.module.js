@@ -1,7 +1,6 @@
 import FireBaseService from '../../firebase/service';
-import {CREATE_BOOK, GET_BOOK, GET_BOOKS, UPDATE_BOOK, DELETE_BOOK} from './books.actions.type';
+import {CREATE_BOOK, DELETE_BOOK, GET_BOOKS, UPDATE_BOOK} from './books.actions.type';
 import {ADD_BOOK} from './books.mutations.type';
-import {booksRef} from "../../firebase/firebase";
 import Vue from 'vue';
 
 
@@ -23,12 +22,8 @@ const actions = {
     });
 
 
-
     // context.commit(ADD_BOOK, vm.allBooks)
   },
-
-
-
 
 
   // [GET_BOOK](context, bookSlug) {
@@ -51,15 +46,7 @@ const actions = {
   //   })
   // },
   [CREATE_BOOK](context, bookData) {
-    return new Promise((resolve, reject) => {
-      FireBaseService.createBooks(bookData)
-        .then(function () {
-          resolve(true)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    })
+      FireBaseService.createBooks(bookData);
   },
   [UPDATE_BOOK](context, bookData) {
     return new Promise((resolve, reject) => {
@@ -88,7 +75,7 @@ const actions = {
 };
 
 const mutations = {
-  [ADD_BOOK] (state, book) {
+  [ADD_BOOK](state, book) {
     //state.books.push(book)
   }
 };
