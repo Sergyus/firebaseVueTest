@@ -30,7 +30,9 @@
               </td>
               <td class="c-table__cell">
                 <!-- <a href="#!" class="c-btn c-btn--warning u-mr-small">Edit</a> -->
-                <router-link :to="{name: 'edit', params: {key:book['.key']} }" class="c-btn c-btn--warning u-mr-small">Edit {{ book['.key'] }}</router-link>
+                <router-link :to="{name: 'edit', params: {key:book['.key']} }" class="c-btn c-btn--warning u-mr-small">
+                  Edit {{ book['.key'] }}
+                </router-link>
                 <button @click="delBook(book['.key'])" class="c-btn c-btn--danger u-mr-small">Delete</button>
               </td>
 
@@ -88,7 +90,7 @@
 
   export default {
     name: "AllBooks",
-    data () {
+    data() {
       return {
         books: [],
       }
@@ -97,8 +99,8 @@
       books: FBS.getBooks()
     },
     methods: {
-      delBook(name) {
-        FBS.deleteBook(name)
+      delBook(key) {
+        FBS.deleteBook(key)
       }
     }
   }

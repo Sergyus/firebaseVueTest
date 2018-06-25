@@ -11,7 +11,7 @@
           <span class="c-sidebar-toggle__bar"></span>
           </button>
           <h2 class="c-navbar__title u-mr-auto">{{user.name}}</h2>
-          <a href="#" @click.prevent="logout" class="c-btn c-btn--success u-mr-small">Logout</a>
+          <a href="#" @click.prevent="_logOut" class="c-btn c-btn--success u-mr-small">Logout</a>
         </header>
 
         <div class="container">
@@ -41,7 +41,7 @@
     },
     mounted() {
       this.redirectToLogin();
-      this.test()
+      this.test();
     },
     methods: {
       ...mapActions([
@@ -55,6 +55,11 @@
       test() {
         //console.log(this);
       },
+      _logOut() {
+        this.logout()
+          .then(() => this.$router.replace('/'))
+          .catch(err => console.log(err))
+      }
     },
   }
 </script>

@@ -8,21 +8,24 @@ const state = {
   books: []
 };
 
+//console.log(state);
+
 const getters = {
   getAllBooks: state => state.books
 };
 
 const actions = {
-  [GET_BOOKS](context) { //context.commit(ADD_BOOKS, book);
+  async [GET_BOOKS](context) { //context.commit(ADD_BOOKS, book);
 
     const vm = new Vue({
       firebase: {
-        allBooks: FireBaseService.getBooks(),
+        allBooks: await FireBaseService.getBooks(),
       },
     });
 
+    let allBooks = vm.allBooks;
 
-    // context.commit(ADD_BOOK, vm.allBooks)
+    context.commit(ADD_BOOK, allBooks)
   },
 
 
@@ -75,8 +78,8 @@ const actions = {
 };
 
 const mutations = {
-  [ADD_BOOK](state, book) {
-    //state.books.push(book)
+  [ADD_BOOK](state, books) {
+    state.books.push(books)
   }
 };
 
