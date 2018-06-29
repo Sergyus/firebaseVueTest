@@ -9,12 +9,13 @@ export default {
     let fileName = hash +'_'+ bookData.file.name;
     let metadata = {contentType: bookData.file.type};
 
-    let uploadTask = uploadRef.child(fileName).put(bookData.file, metadata);
+    let uploadTask = uploadRef.child(fileName).put(bookData.file, metadata);  // Storage
 
     return new Promise((resolve, reject) => {
       uploadTask.then((snapshot) => {
         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
           resolve(true);
+
           booksRef.push({
             name: bookData.name,
             price: bookData.price,
@@ -23,6 +24,7 @@ export default {
               url: downloadURL
             }
           })
+
         });
       });
     }, error => {
@@ -36,6 +38,10 @@ export default {
     if(confirm('Вы действительно хотите удалить эту книгу?')) {
       return booksRef.child(key).remove();
     }
+  },
+  updateBook(editbook) {
+    console.log(editbook);
+    return booksRef.child(editbook).set();
   },
   signIn(data) {
     return auth.signInWithEmailAndPassword(data.email, data.password);
