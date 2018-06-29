@@ -11,7 +11,7 @@
           </div>
           <div class="card-body">
 
-            <form v-on:submit.prevent="addBook">
+            <form v-on:submit.prevent="_createBook">
               <div class="form-group">
                 <label>Book Name:</label>
                 <input type="text" class="form-control" v-model="newBook.name" required/>
@@ -24,11 +24,11 @@
                 <input type="file" @change="onFileSelected" accept="image/jpeg,image/png" v-if="uploadReady" required/>
               </div>
               <div class="form-group">
-                <input v-if="!edit" type="submit" class="btn btn-primary" value="Add Book"/>
+                <input v-if="!edit.status" type="submit" class="btn btn-primary" value="Add Book"/>
                 <template v-else>
                   <div style="display: flex; justify-content: space-around">
                     <button class="btn btn-secondary" @click="clearInputs">Cancel</button>
-                    <input @click="_updateBook" class="btn btn-success" value="Save Book"/>
+                    <input @click="_saveBook" class="btn btn-success" value="Save Book"/>
                   </div>
                 </template>
               </div>
@@ -67,10 +67,8 @@
 </template>
 
 <script>
-  import FBS from '../firebase/service';
   import MainMenu from './main-menu';
-  import store from '../store';
-  import {mapGetters, mapActions} from 'vuex';
+  import {mapActions, mapGetters} from 'vuex';
 
   export default {
     name: "Test",
@@ -83,7 +81,14 @@
           file: '',
         },
         uploadReady: true,
-        edit: false
+        edit: {
+          status: false,
+          key: '',
+          image: {
+            name: '',
+            url: '',
+          },
+        },
       }
     },
     mounted() {
@@ -96,80 +101,72 @@
     },
     methods: {
       ...mapActions([
-        'getBooks',
-        'deleteBook',
         'createBook',
+        'updateBook',
+        'deleteBook',
       ]),
       test() {
         //console.log(this);
       },
       _editBook(book) {
-        console.log(book);
         this.newBook.name = book.name;
         this.newBook.price = book.price;
-        this.newBook.file = book.file;
-        this.edit = true;
+        this.edit.key = book['.key'];
+        this.edit.image.name = book.image.name;
+        this.edit.image.url = book.image.url;
+        this.edit.status = true;
       },
-      _updateBook() {
-        let editBook = {
-          name: this.newBook.name,
-          price: this.newBook.price,
-          file: this.newBook.file
-        };
-        FBS.updateBook(editBook);
-        this.clearInputs();
+      _saveBook() {
+        this.updateBook({
+          edit: this.edit,
+          form: this.newBook
+        })
+          .then(() => {
+            this.clearInputs();
+            this.$toast.success({
+              title: 'Success',
+              message: 'Книга Обновлена!'
+            });
+          });
       },
       _delBook(key, filename) {
         this.deleteBook({key, filename});
-        //store.dispatch(DELETE_BOOK, {key, filename});
         this.$toast.success({
           title:'Success',
           message:'Книга удалена!'
-        })
+        });
       },
-      addBook() {
+      _createBook() {
         let newBook = {
           name: this.newBook.name,
           price: this.newBook.price,
           file: this.newBook.file
         };
-        this.createBook(newBook);
-        this.clearInputs();
-
-        //console.log(newBook);
-
-        // FBS.createBooks(Book)
-        //   .then(() => {
-        //     this.clearInputs();
-        //     this.$toast.success({
-        //       title:'Success',
-        //       message:'Книга бодавлена!'
-        //   })
-        //   }).catch(error => {
-        //     console.log(error);
-        //   })
-        // ;
+        this.createBook(newBook)
+          .then(() => {
+            this.clearInputs();
+            this.$toast.success({
+              title:'Success',
+              message:'Книга бодавлена!'
+            })
+          })
+          .catch(error => {
+            console.log(error);
+          });
       },
       onFileSelected(even) {
         this.newBook.file = even.target.files[0];
       },
       clearInputs() {
-        this.newBook.name = '',
-        this.newBook.price = '',
-        this.newBook.file = '',
+        this.newBook.name = '';
+        this.newBook.price = '';
+        this.newBook.file = '';
         this.uploadReady = false;
         this.$nextTick(() => {
           this.uploadReady = true;
-        })
-        this.edit = false
+        });
+        this.edit.status = false;
       },
     }
   }
 </script>
-
-<style>
-  [v-cloak] {
-    opacity: 0;
-    display: none;
-  }
-</style>

@@ -1,36 +1,6 @@
-import Vue from 'vue';
-import router from "../router";
 import {auth, booksRef, uploadRef} from "./firebase";
 
 export default {
-  createBooks(bookData) {
-
-    let hash = (+new Date).toString(36);
-    let fileName = hash +'_'+ bookData.file.name;
-    let metadata = {contentType: bookData.file.type};
-
-    let uploadTask = uploadRef.child(fileName).put(bookData.file, metadata);  // Storage
-
-    return new Promise((resolve, reject) => {
-      uploadTask.then((snapshot) => {
-        uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          resolve(true);
-
-          booksRef.push({
-            name: bookData.name,
-            price: bookData.price,
-            image: {
-              name: fileName,
-              url: downloadURL
-            }
-          })
-
-        });
-      });
-    }, error => {
-      reject(error);
-    });
-  },
   getBooks() {
     return booksRef;
   },
@@ -39,9 +9,8 @@ export default {
       return booksRef.child(key).remove();
     }
   },
-  updateBook(editbook) {
-    console.log(editbook);
-    return booksRef.child(editbook).set();
+  updateBook(key, uploads) {
+    return booksRef.child(key).set(uploads);
   },
   signIn(data) {
     return auth.signInWithEmailAndPassword(data.email, data.password);
@@ -53,15 +22,3 @@ export default {
     return uploadRef.child(name).delete();
   },
 }
-
-
-
-//============= tmp =================================>
-
-// user.updateProfile({displayName: 'Sergyus Mes'});
-
-// pictures.putString(image, `data_url`).then(function(snapshot) {
-//   console.log('Uploaded a data_url string!');
-//   var url = snapshot.downloadURL;
-//  add it to firestore
-// });
