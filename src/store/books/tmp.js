@@ -100,3 +100,24 @@
 //   var url = snapshot.downloadURL;
 //  add it to firestore
 // });
+
+
+
+
+
+
+// async [DELETE_BOOK](context, data) {
+//
+//   if(data.key) {
+//     FireBaseService.deleteBook(await data.key)
+//   };
+//
+//   if(data.filename) {
+//     FireBaseService.deleteFileStorage(await data.filename)
+//   }
+//
+//   // return Promise.all([
+//   //   FireBaseService.deleteBook(await data.key),
+//   //   FireBaseService.deleteFileStorage(await data.filename)
+//   // ]);
+// }

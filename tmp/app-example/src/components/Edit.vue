@@ -98,7 +98,7 @@ export default {
         slug: UtilityService.stringToSlug(vm.currentBookData.title),
         author: vm.currentBookData.author,
         coverUrl: vm.currentBookData.coverUrl
-      }
+      };
 
       FireBaseService.getBook(vm.currentBookSlug)
         .then(querySnapshot => {

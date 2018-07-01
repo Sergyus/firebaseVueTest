@@ -2,7 +2,7 @@
   <div class="books">
     <div class="container">
 
-      <main-menu></main-menu>
+      <main-menu/>
 
       <div class="row">
 

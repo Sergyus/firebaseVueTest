@@ -26,7 +26,7 @@ const actions = {
   [LOGOUT](context) {
     FBS.logout()
       .then(function () {
-        //window.location.reload()
+        window.location.reload()
       })
       .catch(error => {
         return error

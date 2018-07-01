@@ -18,8 +18,8 @@ new Vue({
   router,
   store,
   created() {
-    store.dispatch(CHECK_AUTH);
-    store.dispatch(INIT_BOOKS);
+    this.$store.dispatch(CHECK_AUTH);
+    this.$store.dispatch(INIT_BOOKS);
   },
   render: h => h(App),
 }).$mount('#app');

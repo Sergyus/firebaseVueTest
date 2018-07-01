@@ -11,24 +11,24 @@
           </div>
           <div class="card-body">
 
-            <form v-on:submit.prevent="_createBook">
+            <form v-on:submit.prevent="sendForm">
               <div class="form-group">
                 <label>Book Name:</label>
-                <input type="text" class="form-control" v-model="newBook.name" required/>
+                <input type="text" class="form-control" v-model="newBook.name" :required="!edit.status"/>
               </div>
               <div class="form-group">
                 <label>Book Price:</label>
-                <input type="text" class="form-control" v-model="newBook.price" required/>
+                <input type="text" class="form-control" v-model="newBook.price" :required="!edit.status"/>
               </div>
               <div class="form-group">
-                <input type="file" @change="onFileSelected" accept="image/jpeg,image/png" v-if="uploadReady" required/>
+                <input type="file" @change="onFileSelected" accept="image/jpeg,image/png" v-if="uploadReady" :required="!edit.status" />
               </div>
               <div class="form-group">
                 <input v-if="!edit.status" type="submit" class="btn btn-primary" value="Add Book"/>
                 <template v-else>
                   <div style="display: flex; justify-content: space-around">
-                    <button class="btn btn-secondary" @click="clearInputs">Cancel</button>
-                    <input @click="_saveBook" class="btn btn-success" value="Save Book"/>
+                    <a @click.prevent="clearInputs" href="#" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" class="btn btn-success" value="Save Book"/>
                   </div>
                 </template>
               </div>
@@ -53,7 +53,7 @@
           <tr v-for="book of getAllBooks" :key="book['.key']">
             <td>{{ book.name }}</td>
             <td>{{ book.price }}</td>
-            <td><img :src="book.image.url" alt=""></td>
+            <td v-if="book.image"><img :src="book.image.url" alt=""></td>
             <td>
               <button @click="_editBook(book)" class="btn btn-warning">Edit</button>
               <button @click="_delBook(book['.key'], book.image.name)" class="btn btn-danger">Delete</button>
@@ -78,8 +78,8 @@
         newBook: {
           name: '',
           price: '',
-          file: '',
         },
+        imageFile: '',
         uploadReady: true,
         edit: {
           status: false,
@@ -108,6 +108,13 @@
       test() {
         //console.log(this);
       },
+      sendForm() {
+        if(this.edit.status) {
+          this._saveBook();
+        } else {
+          this._createBook();
+        }
+      },
       _editBook(book) {
         this.newBook.name = book.name;
         this.newBook.price = book.price;
@@ -118,8 +125,9 @@
       },
       _saveBook() {
         this.updateBook({
+          form: {...this.newBook},
+          file: this.imageFile,
           edit: this.edit,
-          form: this.newBook
         })
           .then(() => {
             this.clearInputs();
@@ -127,6 +135,9 @@
               title: 'Success',
               message: 'Книга Обновлена!'
             });
+          })
+          .catch(error => {
+            console.log(error);
           });
       },
       _delBook(key, filename) {
@@ -137,17 +148,15 @@
         });
       },
       _createBook() {
-        let newBook = {
-          name: this.newBook.name,
-          price: this.newBook.price,
-          file: this.newBook.file
-        };
-        this.createBook(newBook)
+        this.createBook({
+          data: {...this.newBook},
+          file: this.imageFile,
+        })
           .then(() => {
             this.clearInputs();
             this.$toast.success({
               title:'Success',
-              message:'Книга бодавлена!'
+              message:'Книга Добавлена!'
             })
           })
           .catch(error => {
@@ -155,12 +164,13 @@
           });
       },
       onFileSelected(even) {
-        this.newBook.file = even.target.files[0];
+        this.imageFile = even.target.files[0];
       },
       clearInputs() {
-        this.newBook.name = '';
-        this.newBook.price = '';
-        this.newBook.file = '';
+        for(let key  in this.newBook) {
+          this.newBook[key] = ''
+        }
+        this.imageFile = '';
         this.uploadReady = false;
         this.$nextTick(() => {
           this.uploadReady = true;
