@@ -58,9 +58,11 @@
               <button @click="_editBook(book)" class="btn btn-warning">Edit</button>
               <button @click="_delBook(book['.key'], book.image.name)" class="btn btn-danger">Delete</button>
             </td>
+
           </tr>
           </tbody>
         </table>
+        <a href="" @click.prevent="next()">Next</a>
       </div>
     </div>
   </div>
@@ -89,6 +91,8 @@
             url: '',
           },
         },
+        currentPage: 0,
+        pageSize: 2,
       }
     },
     mounted() {
@@ -163,6 +167,10 @@
           .catch(error => {
             console.log(error);
           });
+      },
+      next() {
+        this.currentPage++;
+        console.log(this.currentPage * this.pageSize);
       },
       onFileSelected(even) {
         this.imageFile = even.target.files[0];

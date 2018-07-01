@@ -29,6 +29,8 @@
   import Sidebar from './Sidebar';
   import {mapGetters, mapActions} from 'vuex';
 
+  // TODO: http://panjiachen.github.io/vue-element-admin/#/table/inline-edit-table
+
   export default {
     name: "Admin",
     // wsw: '<p>test</p>',
