@@ -59,9 +59,7 @@ export const actions = {
 
 
     if(data.file) {
-
       const current_image_name = data.edit.image.name;
-
       let UploadTask = FireBaseService.saveToStorage(data.file);
 
       return UploadTask.then(function (snapshot) {
@@ -85,12 +83,12 @@ export const actions = {
     };
   },
 
-  async [DELETE_BOOK](context, data) {
+  [DELETE_BOOK](context, data) {
     if(data.key) {
-      FireBaseService.deleteBook(await data.key)
+      FireBaseService.deleteBook(data.key)
     }
     if(data.filename) {
-      FireBaseService.deleteFileStorage(await data.filename)
+      FireBaseService.deleteFileStorage(data.filename)
     }
   }
 

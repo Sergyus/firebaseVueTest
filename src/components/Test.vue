@@ -53,7 +53,7 @@
           <tr v-for="book of getAllBooks" :key="book['.key']">
             <td>{{ book.name }}</td>
             <td>{{ book.price }}</td>
-            <td v-if="book.image"><img :src="book.image.url" alt=""></td>
+            <td v-if="book.image"><img :src="book.image.url" alt="" style="width: 100px;height: 50px;object-fit: cover"></td>
             <td>
               <button @click="_editBook(book)" class="btn btn-warning">Edit</button>
               <button @click="_delBook(book['.key'], book.image.name)" class="btn btn-danger">Delete</button>
