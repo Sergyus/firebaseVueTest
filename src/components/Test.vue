@@ -14,7 +14,7 @@
             <form v-on:submit.prevent="sendForm">
               <div class="form-group">
                 <label>Book Name:</label>
-                <input type="text" class="form-control" v-model="newBook.name" :required="!edit.status"/>
+                <input type="text" class="form-control" v-model="newBook.name" :required="!edit.status" ref="title"/>
               </div>
               <div class="form-group">
                 <label>Book Price:</label>
@@ -122,6 +122,7 @@
         this.edit.image.name = book.image.name;
         this.edit.image.url = book.image.url;
         this.edit.status = true;
+        this.setFocus();
       },
       _saveBook() {
         this.updateBook({
@@ -165,6 +166,9 @@
       },
       onFileSelected(even) {
         this.imageFile = even.target.files[0];
+      },
+      setFocus() {
+        this.$refs.title.focus();
       },
       clearInputs() {
         for(let key  in this.newBook) {
