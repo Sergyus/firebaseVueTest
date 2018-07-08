@@ -8,6 +8,7 @@ import Admin from '../components/admin/Admin';
 import Dashboard from '../components/admin/Dashboard';
 import AllBooks from '../components/admin/Books';
 import EditBook from '../components/admin/Editbook';
+import AddBook from '../components/admin/Addbook';
 
 Vue.use(Router);
 
@@ -23,6 +24,7 @@ export default new Router({
         { path: 'dashboard', name: 'dashboard', component: Dashboard },
         { path: 'books', name: 'Books', component: AllBooks },
         { path: 'edit/:key', name:"edit", component: EditBook },
+        { path: 'add', name:"add", component: AddBook },
       ]
     },
   ]

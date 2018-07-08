@@ -4,7 +4,7 @@
     <div class="row u-mb-large">
 
       <div class="col-md-12">
-        <a href="#" @click.prevent="" class="c-btn c-btn--success u-mb-small">Add book</a>
+        <router-link class="c-btn c-btn--success u-mb-small" to="add">Add book</router-link>
       </div>
       
       <div class="col-md-12">

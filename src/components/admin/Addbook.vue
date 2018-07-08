@@ -1,13 +1,10 @@
 <template>
-  <!--<div class="row">-->
   <!--<wysiwyg v-model="wsw"/>-->
-  <!--</div>-->
   <div>
-    <h1>EDIT BOOK: {{newBook.name}}</h1>
-    <!-- <h2>book key: {{ bookId }}</h2> -->
+    <h1>Add BOOK</h1>
     <div>
       <a @click="$router.go(-1)" href="#!" class="c-btn c-btn--danger u-mr-small">Go back</a>
-      <a href="#" @click.prevent="_saveBook" class="c-btn c-btn--success">Save</a>
+      <a href="#" @click.prevent="_saveBook" class="c-btn c-btn--success">Add</a>
 
       <div>
       <form v-on:submit.prevent="sendForm">
@@ -34,11 +31,10 @@
 </template>
 
 <script>
-  // import FBS from '../../firebase/service';
   import {mapActions, mapGetters} from 'vuex';
 
   export default {
-    name: "editbook",
+    name: "addbook",
     data() {
       return {
         bookId: '',
@@ -127,10 +123,10 @@
         })
           .then(() => {
             // this.clearInputs();
-            this.$toast.success({
-              title: 'Success',
-              message: 'Книга Обновлена!'
-            });
+            // this.$toast.success({
+            //   title: 'Success',
+            //   message: 'Книга Обновлена!'
+            // });
             this.$router.go(-1)
           })
           .catch(error => {
